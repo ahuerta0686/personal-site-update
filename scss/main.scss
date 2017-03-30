@@ -1,0 +1,858 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Oxygen|Roboto+Mono');
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+
+// $screen-md-min: 992px;
+// $screen-lg-min: 1200px;
+
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+
+$nav-md-min-height: 800px; 
+
+$nav-item: #07a0e8;
+
+$cyan: #33ccff;
+$red: #ff6699;
+$purple: #9966ff;
+$green: #33cc66;
+$orange: #ff9966;
+$border: #cfcfcf;
+$hover: #fafafa;
+$console-bg: #272822;
+$console-text: #F8F8F2;
+
+$text-muted: #888888;
+
+body {
+  display: flex;
+  position: relative;
+  margin: 0;
+  min-height: 100vh;
+
+  // XS Devices
+  flex-direction: column;
+
+  // SM Devices
+  @media (min-width: $screen-sm-min) {
+    flex-direction: row;
+  }
+}
+
+.about-aside {
+  flex: 0 50%;
+  position: relative;
+
+  .about-img {
+    position: relative;
+    margin: 0 auto;
+    width: 450px;
+    img {
+      border-radius: 100%;
+      width: 450px;
+    }
+  }
+}
+
+.tree-nav {
+  flex: 0 1 auto;
+  position: relative;
+  margin: 0 auto;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+
+  // XS Devices
+  padding: 40px 0;
+  width: 300px;
+
+  // SM Devices
+  @media (min-width: $screen-sm-min) {
+    padding: 30px 0;
+    width: 400px;
+  }
+
+  // MD Devices
+  @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+    padding: 50px 0;
+    width: 600px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    width: 1px;
+    background-color: $border;
+    z-index: 0;
+  }
+
+  .nav-item-wrapper {
+    position: relative;
+
+    // XS Devices
+    width: 300px;
+    height: 75px;
+
+    // SM Devices
+    @media (min-width: $screen-sm-min) {
+      margin: auto;
+      width: 400px;
+      height: 80px;
+    }
+
+    // MD Devices
+    @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+      width: 600px;
+      height: 120px;
+    }
+
+    +.nav-item-wrapper {
+      // XS Devices
+      margin-top: 25px;
+
+      // SM Devices
+      @media (min-width: $screen-sm-min) {
+        margin-top: 30px;
+      }
+
+      // MD Devices
+      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+        margin-top: 50px;
+      }
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 1px;
+      background-color: $border;
+      z-index: 0;
+
+      // XS Devices
+      top: 37px;
+      right: 150px;
+      width: 150px;
+
+      // SM Devices
+      @media (min-width: $screen-sm-min) {
+        top: 39.5px;
+        right: 200px;
+        width: 200px;
+      }
+
+      // MD Devices
+      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+        top: 59.5px;
+        right: 300px;
+        width: 200px;
+      }
+    }
+
+    &.icon-right {
+      &:before {
+        // XS Devices
+        left: 150px;
+
+        // SM Devices
+        @media (min-width: $screen-sm-min) {
+          left: 200px;
+        }
+
+        // MD Devices
+        @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+          left: 300px;
+        }
+      }
+
+      .nav-item-icon {
+        right: 0;
+      }
+
+      .nav-item-title {
+        // XS Devices
+        right: 150px;
+
+        // SM Devices
+        @media (min-width: $screen-sm-min) {
+          right: 200px;
+        }
+
+        // MD Devices
+        @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+          right: 300px;
+        }
+      }
+    }
+    
+    .nav-item-icon {
+      position: absolute;
+      display: inline-block;
+      border-radius: 100%;
+      background-color: $nav-item;
+      z-index: 1;
+      cursor: pointer;
+      
+      // XS Devices
+      width: 75px;
+      height: 75px;
+
+      // SM Devices 
+      @media (min-width: $screen-sm-min) {
+        width: 80px;
+        height: 80px;
+      }
+
+      // MD Devices
+      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+        width: 120px;
+        height: 120px;
+      }
+
+      .fa {
+        text-align: center;
+        color: white;
+
+        // XS Devices
+        margin: 15px 0;
+        width: 75px;
+        font-size: 45px;
+        line-height: 45px;
+        
+        // SM Devices
+        @media (min-width: $screen-sm-min) {
+          margin: 15px 0;
+          width: 80px;
+          font-size: 50px;
+          line-height: 50px;
+        }
+
+        // MD Devices
+        @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+          margin: 20px 0;
+          width: 120px;
+          font-size: 80px;
+          line-height: 80px;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &.active {
+        transform: scale(1.1);
+      }
+
+      &.bg-cyan {
+        background-color: $cyan;
+
+        &.active {
+          border: 1px solid $cyan;
+          background-color: white;
+
+          .fa {
+            color: $cyan;
+          }
+        }
+      }
+
+      &.bg-red {
+        background-color: $red;
+
+        &.active {
+          border: 1px solid $red;
+          background-color: white;
+
+          .fa {
+            color: $red;
+          }
+        }
+      }
+
+      &.bg-purple {
+        background-color: $purple;
+
+        &.active {
+          border: 1px solid $purple;
+          background-color: white;
+
+          .fa {
+            color: $purple;
+          }
+        }
+      }
+
+      &.bg-green {
+        background-color: $green;
+
+        &.active {
+          border: 1px solid $green;
+          background-color: white;
+
+          .fa {
+            color: $green;
+          }
+        }
+      }
+
+      &.bg-orange {
+        background-color: $orange;
+
+        &.active {
+          border: 1px solid $orange;
+          background-color: white;
+
+          .fa {
+            color: $orange;
+          }
+        }
+      }
+    }
+
+    .nav-item-title {
+      position: absolute;
+      display: inline-block;
+      right: 0;
+      text-align: center;
+
+      // XS Devices
+      padding: 27.5px 0;
+      width: 150px;
+      font-size: 20px;
+      line-height: 20px;
+
+      // SM Devices
+      @media (min-width: $screen-sm-min) {
+        padding: 30px 0;
+        width: 200px;
+        font-size: 20px;
+        line-height: 20px;
+      }
+
+      // MD Devices
+      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+        padding: 42.5px 0;
+        width: 300px;
+        font-size: 35px;
+        line-height: 35px;
+      }
+    }
+  }
+
+  &.pin-left {
+    // XS Devices
+    width: 100%;
+
+    // SM Devices
+    @media (min-width: $screen-sm-min) {
+      width: 150px;
+    }
+
+    // MD Devices
+    @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+      width: 200px;
+    }
+    &:before {
+      display: none;
+    }
+
+    .nav-pinned-wrapper {
+      
+
+      // SM Devices
+      @media (min-width: $screen-sm-min) {
+        position: fixed;
+      }
+    }
+
+    .nav-item-wrapper {
+      &:before {
+        position: absolute;
+        width: 125px !important;
+      }
+
+      // XS Devices
+      width: 100%;
+
+      // SM Devices
+      @media (min-width: $screen-sm-min) {
+        width: 125px;
+      }
+
+      // MD Devices
+      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+        width: 200px;
+      }
+
+      &:before {
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    .nav-item-icon {
+      left: 50px;
+
+      // SM Devices 
+      @media (min-width: $screen-sm-min) {
+        right: 0;
+      }
+    }
+
+    .nav-item-title {
+      // XS Devices
+      position: absolute;
+      left: 150px !important;
+      text-align: left;
+
+      // SM Devices
+      @media (min-width: $screen-sm-min) {
+        position: relative;
+        display: none;
+      }
+    }
+  }
+}
+
+section {
+  flex: 1 0 0px;
+  position: relative;
+  font-family: 'Oxygen', sans-serif;
+
+  // XS Devices
+  margin: 0;
+
+  // SM Devices
+  @media (min-width: $screen-sm-min) {
+    border-left: 1px solid $border;
+    margin: 30px 30px 30px 0;
+  }
+
+  .section-heading {
+    position: relative;
+    padding: 10px 30px;
+
+    .section-title {
+      font-size: 30pt;
+      font-weight: 400;
+    }
+  }
+
+  .section-body {
+    padding: 10px 30px;
+    height: 100%;
+  }
+
+  .section-footer {
+
+  }
+
+  .console {
+    position: relative;
+    display: block;
+    padding: 0 0 0 5px;
+    height: 30px;
+    background-color: $console-bg;
+    color: $console-text;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    input {
+      position: absolute;
+      margin: 0;
+      padding: 4px 0;
+      border: 0;
+      left: 20px;
+      right: 0;
+      background-color: $console-bg;
+      color: $console-text;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 16px;
+      outline: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.text-cyan {
+  color: $cyan;
+}
+
+.text-red {
+  color: $red;
+}
+
+.text-purple {
+  color: $purple;
+}
+
+.text-green {
+  color: $green;
+}
+
+.text-orange {
+  color: $orange;
+}
+
+.projects {
+  position: relative;
+
+  .project {
+    position: relative;
+
+    // XS Devices
+
+
+    // SM Devices
+    @media (min-width: $screen-sm-min) {
+      display: flex;
+    }
+
+    .project-img {
+      flex: 1 30%;
+      margin: 0 0 10px;
+      height: 150px;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .project-details {
+      display: flex;
+      flex-direction: column;
+      flex: 0 70%;
+
+      // SM Devices
+      @media (min-width: $screen-sm-min) {
+        margin: 0 0 0 20px;
+      }
+
+      .project-details-title {
+        flex: 0 1 auto;
+        margin: 0 0 5px 0;
+        font-size: 24pt;
+      }
+
+      .project-details-description {
+        flex: 1 0 auto;
+        font-size: 12pt;
+        line-height: 18pt;
+      }
+
+      .project-details-links {
+        flex: 0 1 auto;
+        margin: 5px 0 0 0;
+        bottom: 0;
+
+        a {
+          display: inline-block;
+          padding: 6px 12px;
+          border: 1px solid white;
+          border-radius: 6px;
+          text-decoration: none;
+          color: black;
+
+          &.bg-red {
+            background-color: $red;
+            color: white;
+
+            &:hover {
+              border: 1px solid $red;
+              background-color: white;
+              color: $red;
+            }
+          }
+        }
+      }
+    }
+
+    +.project {
+      margin: 30px 0 0 0;
+    }
+  }
+
+}
+
+.posts {
+  margin: 0 auto;
+  // max-width: 50%;
+
+  // MD Devices
+  @media (min-width: $screen-md-min) {
+    max-width: 800px;
+  }
+  .post {
+    position: relative;
+    .timestamp {
+      margin: 0 0 5px 0;
+      color: $text-muted;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .post-title {
+      margin: 0 0 10px 0;
+      font-size: 24pt;
+    }
+
+    .post-body {
+      margin: 0 0 10px 0;
+      font-size: 12pt;
+      line-height: 20pt;
+    }
+
+    .post-tags {
+      a {
+        display: inline-block;
+        padding: 3px 12px;
+        border: 1px solid white;
+        border-radius: 6px;
+        text-decoration: none;
+        color: black;
+
+        &.bg-purple {
+          background-color: $purple;
+          color: white;
+
+          &:hover {
+            border: 1px solid $purple;
+            background-color: white;
+            color: $purple;
+          }
+        }
+      }
+    }
+
+    +.post {
+      margin: 50px 0 0 0;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -25px;
+        left: 100px;
+        right: 100px;
+        height: 1px;
+        background-color: $border;
+      }
+    }
+  }
+}
+
+section.content {
+  position: relative;
+  >.post, >.project, >.page {
+    // XS Devices
+    padding: 0 20px 30px 20px;
+
+    // SM Devices
+    @media (min-width: $screen-sm-min) {
+      padding: 30px;
+    }
+    .post-title, .project-title, .page-title {
+      margin: 0 0 10px 0;
+      font-size: 24pt;
+    }
+
+    .project-img {
+      margin: 0 auto 10px auto;
+      // min-width: 80%;
+      max-width: 80%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .timestamp {
+      margin: 0 0 10px 0;
+      color: $text-muted;
+      text-transform: uppercase;
+    }
+
+    .post-body, .project-body, .page-body {
+      margin: 0 0 10px 0;
+      font-size: 12pt;
+      line-height: 20pt;
+    }
+
+    .project-links {
+      a {
+        display: inline-block;
+        padding: 6px 12px;
+        border: 1px solid white;
+        border-radius: 6px;
+        text-decoration: none;
+        color: black;
+
+        &.bg-red {
+          background-color: $red;
+          color: white;
+
+          &:hover {
+            border: 1px solid $red;
+            background-color: white;
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+}
+
+section.pin-left {
+  margin: 0 0 0 30px;
+  top: 0;
+  bottom: 0;
+
+  // XS Devices
+  display: none;
+
+  // SM Devices
+  @media (min-width: $screen-sm-min) {
+    flex: 0 1 250px;
+    width: 250px;
+  }
+
+  // MD Devices
+  @media (min-width: $screen-md-min) {
+    display: block;
+    flex: 0 1 300px;
+    width: 300px;
+  }
+
+  ~.content {
+    margin-left: 0;
+  }
+
+  .listing-pinned-wrapper {
+    position: fixed;
+    max-height: 100%;
+    overflow-y: auto;
+
+    // SM Devices
+    @media (min-width: $screen-sm-min) {
+      width: 250px;
+    }
+
+    // MD Devices
+    @media (min-width: $screen-md-min) {
+      width: 300px;
+    }
+  }
+
+  .section-heading {
+    padding-right: 0;
+  }
+
+  .section-body {
+    position: relative;
+    // margin-right: -30px;
+    padding: 0;
+    // max-height: 80%;
+  }
+
+  .projects {
+    >a {
+      display: block;
+      text-decoration: none;
+    }
+    
+    .project {
+      display: block;
+      padding: 10px 10px 0 10px;
+      height: auto;
+      cursor: pointer;
+
+
+      &.active {
+        background-color: lighten($red, 20%);
+        pointer-events: none;
+      }
+
+      &:hover {
+        background-color: lighten($red, 25%);
+      }
+
+      +.project {
+        margin: 0;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background-color: $border;
+        }
+      }
+    }
+
+    .project-img {
+      height: 120px;
+    }
+
+    .project-details {
+      margin: 0;
+
+      .project-details-title {
+        font-size: 18pt;
+      }
+
+      .project-details-description {
+        display: none;
+      }
+
+      .project-details-links {
+        display: none;
+      }
+    }
+  }
+
+  .posts {
+    margin: 0;
+    min-width: 100%;
+
+    .post {
+      padding: 15px 10px 5px 10px;
+      cursor: pointer;
+
+      &.active {
+        background-color: lighten($purple, 22.5%);
+        pointer-events: none;
+      }
+
+      &:hover {
+        background-color: lighten($purple, 27.5%);
+      }
+
+      +.post {
+        margin: 0;
+
+        &:before {
+          top: 0;
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+
+    .post-title {
+      font-size: 18pt;
+    }
+
+    .post-body {
+      display: none;
+    }
+
+    .post-more {
+      display: none;
+    }
+  }
+}
