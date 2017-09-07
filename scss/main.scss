@@ -1,703 +1,2698 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand|Oxygen|Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Indie+Flower');
 @import '../node_modules/font-awesome/scss/font-awesome.scss';
 
-// $screen-md-min: 992px;
-// $screen-lg-min: 1200px;
-
 $screen-sm-min: 768px;
-$screen-md-min: 992px;
+$screen-md-min: 1024px;
+$screen-lg-min: 1400px;
+$screen-xl-min: 2174px;
 
-$nav-md-min-height: 800px; 
+$screen-sm-half: $screen-sm-min / 2;
+$screen-md-half: $screen-md-min / 2;
+$screen-lg-half: $screen-lg-min / 2;
 
-$nav-item: #07a0e8;
+$cyan: #4A90E2;
+$pink: #DC457A;
+$purple: #7A42DB;
+$gray: #8F8E94;
+$lightgray: #D7D7D7;
 
-$cyan: #33ccff;
-$red: #ff6699;
-$purple: #9966ff;
-$green: #33cc66;
-$orange: #ff9966;
-$border: #cfcfcf;
-$hover: #fafafa;
-$console-bg: #272822;
-$console-text: #F8F8F2;
+$utrgv-orange: #D44C24;
+$utrgv-gray: #5A595F;
 
-$text-muted: #888888;
-
-body {
-  display: flex;
-  position: relative;
+html, body {
+  // position: relative;
   margin: 0;
+  padding: 0;
   min-height: 100vh;
-
-  // XS Devices
-  flex-direction: column;
-
-  // SM Devices
-  @media (min-width: $screen-sm-min) {
-    flex-direction: row;
-  }
 }
 
-.about-aside {
-  flex: 0 50%;
+body {
   position: relative;
+  // overflow-x: hidden;
+  overflow-y: scroll;
+}
 
-  .about-img {
+.header {
+  // position: relative;
+  background: url('/img/headerbg2.png') top center / cover;
+
+  // min-height: 100px;
+
+  // LG Devices
+  @media screen and (min-width: $screen-lg-min) {
+    height: 380px;
+  }
+
+  ~.content, ~.footer {
+    display: none;
+  }
+
+  &.no-js {
+    ~.content {
+      display: block;
+    }
+  }
+
+  &.collapsed {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    // animation: header-bg-slide-up 0.5s ease-out;
+    z-index: 5;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      // animation: header-keep-static 1s linear, header-bg-slide-up-sm 0.5s ease-out;
+      height: 100px;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      animation: header-keep-static 1s linear, header-bg-slide-up 0.5s ease-out;
+      height: 140px;
+    }
+
+    .navigation-wrapper {
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        height: 140px;
+      }
+    }
+
+    .navigation {
+      height: calc(1.125em + 40px);
+
+      &:hover {
+        .nav-item {
+          position: relative;
+
+          &.active:after {
+            transform: rotate(-90deg);
+            // animation: nav-item-arrow-rotate 0.25s ease-out;
+          }
+        }
+      }
+
+      .nav-item {
+        border: none !important;
+        position: absolute;
+        width: 100%;
+
+        &:nth-of-type(2) {
+          animation: nav-item2-collapse 0.65s ease-out;
+        }
+
+        &:nth-of-type(3) {
+          animation: nav-item3-collapse 0.65s ease-out;
+        }
+
+        &:nth-of-type(4) {
+          animation: nav-item4-collapse 0.65s ease-out;
+        }
+
+        &:nth-of-type(5) {
+          animation: nav-item5-collapse 0.65s ease-out;
+        }
+
+        &.active:after {
+          content: '\f107';
+          position: absolute;
+          top: 0;
+          left: 20px;
+          bottom: 0;
+          padding: 20px 0;
+          font-family: FontAwesome;
+          font-size: 1.125em;
+          line-height: 1;
+        }
+      }
+
+      .nav-item.active {
+        z-index: 10;
+      }
+    }
+
+    .quote, .more {
+      // display: none;
+      animation: header-quote-more-hide 0.5s ease-out;
+      transform: scaleY(0);
+
+      &:hover {
+        pointer-events: none;
+      }
+    }
+
+    ~.v-card {
+      // display: none;
+      top: -360px;
+      animation: v-card-slide-up 0.35s ease-out;
+      z-index: 10;
+    }
+
+    ~.content, ~.footer {
+      display: block;
+    }
+
+    ~.content {
+      // top: 140px;
+      animation: content-keep-in-place 0.4s linear, content-slide-in 0.5s 0.4s ease-out;
+      position: relative;
+      top: initial;
+      // position: absolute;
+      // top: 140px;
+    }
+
+    ~.footer {
+      animation: footer-hide 2s linear;
+    }
+  }
+
+  .quote {
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    bottom: 120px;
+    width: 100%;
+    text-align: center;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      top: 460px;
+      bottom: 120px;
+    }
+
+    span {
+      flex: 0;
+      
+      font-family: 'Indie Flower';
+      font-size: 3em;
+      color: #666;
+    }
+  }
+
+  .more {
+    position: absolute;
+    bottom: 0;
+    padding: 10px 0;
+    width: 100%;
+    background: #EEE;
+    color: #CCC;
+    font-family: FontAwesome;
+    font-size: 80px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background: #CCC;
+      color: #EEE;
+      animation: heading-more-hover 2s ease-in-out infinite;
+    }
+  }
+
+  .navigation-wrapper {
+    display: none;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      display: block;
+      width: 300px;
+      height: 100px;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      width: calc(50% - 400px);
+      height: 380px;
+    }
+  }
+
+  .navigation {
     position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    flex: 1;
     margin: 0 auto;
-    width: 450px;
-    img {
-      border-radius: 100%;
-      width: 450px;
+    width: 240px;
+    // box-shadow: 1px 1px 100px #666;
+    background: #fff;
+    z-index: 1;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      height: calc(1.125em + 40px);
+
+      &:hover {
+        .nav-item {
+          position: relative;
+
+          &.active:after {
+            transform: rotate(-90deg);
+            // animation: nav-item-arrow-rotate 0.25s ease-out;
+          }
+        }
+      }
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      height: unset;
+    }
+
+    .nav-item {
+      display: block;
+      box-sizing: border-box;
+      padding: 20px 30px;
+      background: #fff;
+      color: $gray;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.125em;
+      font-weight: 400;
+      line-height: 1;
+      text-align: right;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      @media screen and (min-width: $screen-sm-min) {
+        border: none !important;
+        position: absolute;
+        width: 100%;
+
+        &:nth-of-type(2) {
+          animation: nav-item2-collapse 0.65s ease-out;
+        }
+
+        &:nth-of-type(3) {
+          animation: nav-item3-collapse 0.65s ease-out;
+        }
+
+        &:nth-of-type(4) {
+          animation: nav-item4-collapse 0.65s ease-out;
+        }
+
+        &:nth-of-type(5) {
+          animation: nav-item5-collapse 0.65s ease-out;
+        }
+
+        &.active {
+          z-index: 10;
+        }
+
+        &.active:after {
+          content: '\f107';
+          position: absolute;
+          top: 0;
+          left: 20px;
+          bottom: 0;
+          padding: 20px 0;
+          font-family: FontAwesome;
+          font-size: 1.125em;
+          line-height: 1;
+        }
+      }
+
+      @media screen and (min-width: $screen-lg-min) {
+        position: relative;
+
+        &.active:after {
+          content: none;
+        }
+      }
+
+      +.nav-item {
+        border-top: 1px solid $lightgray;
+      }
+
+      &:hover {
+        background: #EEE;
+      }
+
+      &.active {
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          width: 3px;
+          background: $cyan;
+        }
+      }
     }
   }
 }
 
-.tree-nav {
-  flex: 0 1 auto;
-  position: relative;
-  margin: 0 auto;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 300;
+.content {
+  position: absolute;
+  top: 100vh;
+}
+
+.footer {
+  margin-bottom: -20px;
+  width: 100%;
+  background: #EEE;
 
   // XS Devices
-  padding: 40px 0;
-  width: 300px;
+  height: 60px;
 
   // SM Devices
-  @media (min-width: $screen-sm-min) {
-    padding: 30px 0;
-    width: 400px;
+  @media screen and (min-width: $screen-sm-min) {
+    height: 100px;
+  }
+}
+
+.v-card {
+  position: absolute;
+  margin: 0 auto;
+  background: $cyan;
+  box-shadow: 0 0 10px #666;
+  overflow: hidden;
+
+  // XS Devices
+  top: 0;
+  height: 350px;
+  width: 100%;
+
+  // SM Devices
+  @media screen and (min-width: $screen-sm-min) {
+    top: 120px;
+    margin: 0 calc(50% - 300px);
+    width: 600px;
+    height: 300px;
   }
 
   // MD Devices
-  @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-    padding: 50px 0;
-    width: 600px;
+  // @media screen and (min-width: $screen-md-min) {
+  //   top: 100px;
+  //   margin: 0 calc(50% - 400px);
+  // }
+
+  // LG Devices
+  @media screen and (min-width: $screen-lg-min) {
+    top: 120px;
+    margin: 0 calc(50% - 400px);
+    width: 800px;
+    height: 340px;
   }
 
-  &:before {
-    content: "";
+  .card-avatar {
     position: absolute;
-    top: 0;
-    left: 50%;
-    bottom: 0;
-    width: 1px;
-    background-color: $border;
-    z-index: 0;
-  }
-
-  .nav-item-wrapper {
-    position: relative;
-
-    // XS Devices
-    width: 300px;
-    height: 75px;
+    border-radius: 100%;
+    overflow: hidden;
 
     // SM Devices
-    @media (min-width: $screen-sm-min) {
-      margin: auto;
-      width: 400px;
-      height: 80px;
+    @media screen and (min-width: $screen-sm-min) {
+      width: 500px;
+      height: 500px;
+      left: -270px;
+      top: -100px;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      left: -360px;
+      top: -155px;
+      width: 650px;
+      height: 650px;
+    }
+
+    img {
+      display: block;
+      position: absolute;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        top: 100px;
+        bottom: 100px;
+        left: 260px;
+        height: 300px;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        top: 155px;
+        bottom: 155px;
+        left: 335px;
+        height: 340px;
+      }
+    }
+  }
+
+  .card-info {
+    position: absolute;
+    right: 0;
+
+    margin: 0 30px;
+
+    font-family: 'Lato', sans-serif;
+    text-align: right;
+
+    color: #fff;
+
+    // XS Devices
+    height: 350px;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      left: 220px;
+      height: 300px;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      left: 300px;
+      height: 340px;
+    }
+
+    .info-name {
+      margin-top: 26px;
+      margin-bottom: 0;
+
+      font-weight: 400;
+      font-size: 42px;
+    }
+
+    .info-tagline {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      font-weight: 400;
+      font-size: 20px;
+    }
+
+    .info-social {
+      margin-top: 16px;
+
+      font-size: 18px;
+
+      .social-item {
+        margin-top: 5px;
+      }
+    }
+
+    .info-resume-download {
+      position: absolute;
+      border: 1px solid #fff;
+      right: -10px;
+      bottom: 20px;
+
+      // XS Deivces
+      width: 250px;
+      height: 40px;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        width: 300px;
+        height: 40px;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        width: 380px;
+        height: 60px;
+      }
+
+      &:hover {
+        background: darken($cyan, 10%);
+      }
+
+      a {
+        display: block;
+        box-sizing: border-box;
+        height: 100%;
+        font-size: 20px;
+        line-height: 20px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+
+        // XS Devices
+        padding: 10px 0;
+
+        // SM Devices
+        @media screen and (min-width: $screen-sm-min) {
+          padding: 10px 0;
+        }
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          padding: 20px 0;
+        }
+      }
+    }
+  }
+}
+
+.job-experience-heading, .education-heading, .skills-heading, .portfolio-heading, .contact-heading {
+  background: #FFF;
+
+  // XS Devices
+  height: calc(1.5em + 30px);
+
+  // MD Devices
+  @media screen and (min-width: $screen-md-min) {
+    height: 80px;
+    padding: 0 calc(50vw - #{$screen-md-half});
+  }
+
+  // LG Devices
+  @media screen and (min-width: $screen-lg-min) {
+    padding: 0 calc(50vw - #{$screen-lg-half});
+    color: #000;
+  }
+
+  .title {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+
+    // XS Devices
+    padding: 15px;
+    font-size: 1.5em;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      
     }
 
     // MD Devices
-    @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-      width: 600px;
-      height: 120px;
+    @media screen and (min-width: $screen-md-min) {
+      padding: 20px;
+      font-size: 2.5em;
+    }
+  }
+}
+
+.job-experience {
+  position: relative;
+  // display: flex;
+  // width: 100vw;
+  background: $gray;
+  z-index: 1;
+  overflow: hidden;
+
+  // XS Devices
+  // height: 140px;
+
+  // SM Devices
+  @media screen and (min-width: $screen-sm-min) {
+
+  }
+
+  // MD Devices
+  @media screen and (min-width: $screen-md-min) {
+    display: block;
+    height: 220px;
+  }
+
+  // LG Devices
+  @media screen and (min-width: $screen-lg-min) {
+    height: 240px;
+  }
+
+  &.bg-pink {
+    background: $pink;
+
+    .details {
+      background: $pink;
     }
 
-    +.nav-item-wrapper {
+    .summary {
+      background: darken($pink, 10%);
+    }
+
+    .more {
+      background: darken($pink, 10%);
+
+      &:before, &:after {
+        background: darken($pink, 10%);
+      }
+    }
+
+    .less:hover {
+      background: darken($pink, 10%);
+    }
+  }
+
+  &.bg-purple {
+    background: $purple;
+
+    .details {
+      background: $purple;
+    }
+
+    .summary {
+      background: darken($purple, 10%);
+    }
+
+    .more {
+      background: darken($purple, 10%);
+
+      &:before, &:after {
+        background: darken($purple, 10%);
+      }
+    }
+
+    .less:hover {
+      background: darken($purple, 10%);
+    }
+  }
+
+  &:hover {
+    .more > .animation {
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        display: block;
+        animation: experience-more-pulse 1.75s ease-in infinite;
+      }
+    }
+  }
+
+  &.flipped {
+    .details {
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        margin: 0 0 0 calc(50vw - 665px);
+        left: 0;
+      }
+    }
+
+    .media {
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        margin: 0;
+        right: calc(50vw - #{$screen-lg-half} + 285px);
+      }
+    }
+  }
+
+  &.expanded {
+    .media, .details {
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        display: none;
+      }
+    }
+
+    .summary {
+      display: block;
+      max-height: 500px;
+
       // XS Devices
-      margin-top: 25px;
+      animation: education-expand-xs 0.2s linear;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        // display: none;
+        animation: job-experience-summary-expand-md 0.2s ease-out;
+      }
+    }
+
+    .more {
+      // XS Devices
+      display: none;
+    }
+
+    .less {
+      display: flex;
+    }
+  }
+
+  &.collapsed {
+
+    .summary {
+      // XS Devices
+      padding: 0;
+      max-height: 0;
+      animation: education-collapse-xs 0.2s linear;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        animation: job-experience-summary-collapse-md 0.2s ease-in;
+      }
+    }
+  }
+
+  .media {
+    // flex: 0;
+    box-sizing: border-box;
+    z-index: 2;
+    // background: red;
+
+    // XS Devices
+    position: relative;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      // display: inline-block;
+      float: left;
+    }
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      display: block;
+      margin: 0 0 0 calc(50vw - #{$screen-md-half});
+      padding: 30px 0 30px 30px;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      display: block;
+      margin: 0 0 0 calc(50vw - #{$screen-lg-half});
+      padding: 40px 0 40px 70px;
+      width: 360px;
+      height: 240px;
+    }
+
+    .album {
+      position: relative;
+      display: block;
+      // background: pink;
+
+      // XS Devices
+      height: 160px;
 
       // SM Devices
-      @media (min-width: $screen-sm-min) {
-        margin-top: 30px;
+      @media screen and (min-width: $screen-sm-min) {
+        width: 290px;
+        height: 160px;
+      }
+
+      .image-left {
+        position: absolute;
+        margin: 10px 0 10px 0;
+        box-shadow: 0 1px 2px #333;
+        width: 20px;
+        height: 140px;
+        background: $lightgray;
+
+        // XS Devices
+        display: none;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          display: block;
+        }
+      }
+
+      .image-main {
+        display: block;
+        background: $lightgray;
+
+        // XS Devices
+        // width: 100%;
+        height: 100%;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          position: absolute;
+          left: 25px;
+          box-shadow: 0 1px 5px #333;
+          width: 240px;
+          height: 160px;
+        }
+      }
+
+      .image-right {
+        position: absolute;
+        left: 270px;
+        display: block;
+        margin: 10px 0 10px 0;
+        box-shadow: 0 1px 2px #333;
+        width: 20px;
+        height: 140px;
+        background: $lightgray;
+
+        // XS Devices
+        display: none;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .details {
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    color: #FFF;
+    font-family: 'Lato', sans-serif;
+
+    // XS Devices
+    position: relative;
+    padding: 12.5px;
+    z-index: 2;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      display: inline-block;
+    }
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      display: block;
+      position: absolute;
+      left: calc(50vw - #{$screen-md-half} + 320px);
+      padding: 30px 0 30px 30px;
+      width: 480px;
+      height: 220px;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      left: calc(50vw - #{$screen-lg-half} + 360px);
+      padding: 35px 0 35px 35px;
+      width: 865px;
+      height: 240px;
+    }
+
+    .job-title {
+      margin: 0;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+
+      // XS Devices
+      font-size: 1.5em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 2.25em;
+      }
+    }
+
+    .job-company {
+      margin: 5px 0 0 0;
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      font-size: 1.375em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 2em;
+      }
+    }
+
+    .job-location {
+      margin: 5px 0 0 0;
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      font-size: 1.375em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 1.75em;
+      }
+    }
+
+    .job-dates {
+      display: block;
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      margin: 5px 0 0 0;
+      font-size: 1.25em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        margin: 5px 0 0 0;
+        font-size: 1.5em;
       }
 
       // MD Devices
-      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-        margin-top: 50px;
+      @media screen and (min-width: $screen-md-min) {
+        margin: 30px 0 0 0;
+        font-size: 1.5em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        margin: 40px 0 0 0;
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  .summary {
+    position: relative;
+    font-family: 'Lato', sans-serif;
+    z-index: 1;
+    overflow-y: hidden;
+
+    // XS Devices
+    font-size: 1em;
+    line-height: 1.5;
+    color: #FFF;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      font-size: 1.125em;
+    }
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      // margin: 20px 0 0 20px;
+      // box-sizing: border-box;
+      // right: calc(50vw - #{$screen-md-half});
+      margin: 0 0 0 calc(50vw - #{$screen-md-half} + 60px);
+      padding: 0 calc(50vw - #{$screen-md-half}) 0 0;
+      width: $screen-md-min;
+      height: 100%;
+      font-size: 1.75em;
+      line-height: 1.50;
+      // color: #000;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      margin: 0 0 0 calc(50vw - #{$screen-lg-half} + 60px);
+      padding: 0 calc(50vw - #{$screen-lg-half}) 0 0;
+      width: $screen-lg-min;
+    }
+    
+    ul {
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        margin: 20px 0;
+      }
+    }
+
+  }
+
+  .more {
+    display: block;
+    cursor: pointer;
+
+    // XS Devices
+    position: relative;
+    width: 100%;
+    min-height: 60px;
+    z-index: 1;
+
+    // XS Devices
+    background: darken($gray, 10%);
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: calc(215px + 50vw - #{$screen-md-half});
+      height: 220px;
+      background: unset !important;
+      z-index: 3;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      width: calc(215px + 50vw - #{$screen-lg-half});
+      height: 240px;
+    }
+
+    &:hover {
+      opacity: 1;
+      // animation: experience-more-visible 0.25s ease-out;
+
+      &:before, &:after {
+        background: #FFF;
+      }
+
+      &:before {
+        animation: experience-more-grow 0.25s ease-out;
+        transform: translateX(-10px);
+      }
+
+      .animation {
+        display: none;
+        animation: none;
+      }
+
+      span, span:before, span:after {
+        background: #EEE;
+      }
+    }
+
+    .animation {
+      display: none;
+      position: absolute;
+      border-top-left-radius: 100%;
+      border-bottom-left-radius: 100%;
+      width: 450px;
+      height: 450px;
+      z-index: 10;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        border: 1px solid #FFF;
+        top: -115px;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        top: -105px;
       }
     }
 
     &:before {
-      content: "";
+      display: block;
       position: absolute;
-      height: 1px;
-      background-color: $border;
-      z-index: 0;
+      border-radius: 100%;
+      width: 450px;
+      height: 450px;
+      z-index: 1;
 
       // XS Devices
-      top: 37px;
-      right: 150px;
-      width: 150px;
-
-      // SM Devices
-      @media (min-width: $screen-sm-min) {
-        top: 39.5px;
-        right: 200px;
-        width: 200px;
-      }
+      content: none;
 
       // MD Devices
-      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-        top: 59.5px;
-        right: 300px;
-        width: 200px;
+      @media screen and (min-width: $screen-md-min) {
+        content: '';
+        top: -115px;
+        background: darken($gray, 10%);
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        top: -105px;
       }
     }
 
-    &.icon-right {
-      &:before {
-        // XS Devices
-        left: 150px;
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 215px;
+      height: 300px;
+      background: #EEEEEE;
+      z-index: 2;
 
-        // SM Devices
-        @media (min-width: $screen-sm-min) {
-          left: 200px;
-        }
+      // XS Devices
+      // display: none;
 
-        // MD Devices
-        @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-          left: 300px;
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        // display: block;
+        // width: calc(50vw - #{$screen-sm-half});
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        content: '';
+        width: calc(50vw - #{$screen-md-half});
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        width: calc(50vw - #{$screen-lg-half});
+      }
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      z-index: 3;
+
+      // XS Devices
+      left: 50%;
+      width: 100%;
+      color: #FFF;
+      font-size: 48px;
+      text-shadow: 1px 1px 3px #000;
+      text-align: center;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        background: #FFF;
+        box-shadow: 1px 1px 3px #000;
+        border-radius: 100%;
+        font-size: 0;
+        left: 107.5px;
+        width: 18px;
+        height: 18px;
+      }
+
+      &:before, &:after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-200%);
+        border-radius: 100%;
+        background: #fff;
+        box-shadow: 1px 1px 3px #000;
+
+        // XS-SM Devices
+        width: 14px;
+        height: 14px;
+
+        // MD+ Devices
+        @media screen and (min-width: $screen-md-min) {
+          content: '';
+          width: 18px;
+          height: 18px;
         }
       }
 
-      .nav-item-icon {
+      &:after {
+        transform: translateY(-50%) translateX(100%);
+      }
+    }
+  }
+
+  .less {
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+
+    // XS Devices
+    position: relative;
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      width: 60px;
+      position: absolute;
+      padding-left: calc(50vw - #{$screen-md-half});
+      height: 220px;
+      top: 0;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      height: 240px;
+      padding-left: calc(50vw - #{$screen-lg-half});
+    }
+
+    &:hover {
+      background: darken($gray, 10%);
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        background: #FFF !important;
+
+        &:before {
+          color: #EEE;
+        }
+      }
+    }
+
+    &:before {
+      flex: 0;
+      display: block;
+      color: #FFF;
+      font-family: FontAwesome;
+      font-size: 48px;
+      text-shadow: 1px 1px 4px #666;
+
+      // XS Devices
+      content: '\f106';
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        content: '\f105';
+      }
+    }
+  }
+}
+
+.education {
+  position: relative;
+  // width: calc(100% - 20px);
+  // background: $utrgv-gray;
+  overflow: hidden;
+
+  // MD Devices
+  @media screen and (min-width: $screen-md-min) {
+    height: 360px;
+  }
+
+  // LG Devices
+  @media screen and (min-width: $screen-lg-min) {
+    height: 430px;
+  }
+
+  &:before {
+    // content: '';
+    position: absolute;
+    left: 0;
+    right: 50%;
+    height: 100%;
+    background: $utrgv-orange;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      content: '';
+    }
+  }
+
+  &:after {
+    // content: '';
+    position: absolute;
+    left: 50%;
+    right: 0;
+    height: 100%;
+    background: $utrgv-gray;
+    z-index: -1;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      content: '';
+    }
+  }
+
+  .academic-wrapper, .extracurricular-wrapper {
+    // overflow: hidden;
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      height: 360px;
+    }
+
+    @media screen and (min-width: $screen-lg-min) {
+      height: 430px;
+    }
+
+    &.expanded {
+      width: 100%;
+
+      .academic, .extracurricular {
+        transform: none;
+        width: 100%;
+      }
+
+      .academic-extra, .extracurricular-extra {
+        position: relative;
+        // transform: none;
+        max-height: 500px;
+        animation: education-expand-xs 0.2s linear;
+        overflow-y: hidden;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          animation: none;
+        }
+      }
+
+      .more {
+        top: 0;
+      }
+    }
+
+    &.collapsed {
+
+      .academic-extra, .extracurricular-extra {
+        // XS Devices
+        max-height: 0;
+        animation: education-collapse-xs 0.2s linear;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          display: none;
+        }
+      }
+    }
+
+    >.more {
+      display: block;
+      cursor: pointer;
+
+      // XS Devices
+      position: relative;
+      padding: 10px 0;
+      width: 100%;
+      height: 48px;
+      text-align: center;
+      z-index: 2;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        position: absolute;
+        padding: 0;
+        width: 60px;
+        height: 360px;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        height: 430px;
+        width: 80px;
+      }
+
+      &:before {
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        text-shadow: 1px 1px 4px #333;
+        font-family: FontAwesome;
+        font-size: 48px;
+        line-height: 48px;
+        color: #FFF;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          position: absolute;
+        }
+      }
+
+      &:hover {
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          width: 120px;
+        }
+      }
+    }
+  }
+
+  .academic-wrapper {
+    background: $utrgv-orange;
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      transform: skewX(-10deg);
+      position: absolute;
+      right: 50%;
+      // width: calc(50vw - 7.5px);
+      width: 50vw;
+    }
+
+    &.expanded {
+      transform: none;
+      right: 0;
+      z-index: 2;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        animation: education-academic-expand-md 0.05s ease-out;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        animation: education-academic-expand-lg 0.05s ease-out;
+      }
+
+      .academic {
+        // right: calc(50% - 8px);
+        // animation: education-content-unskew 0.75s ease-in;
+
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          // display: none;
+          // position: relative;
+          // width: calc(50vw - 7.5px);
+          width: $screen-md-half;
+          left: calc(50vw - #{$screen-md-half});
+          // right: 3px;
+        }
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          width: $screen-lg-half;
+          left: calc(50vw - #{$screen-lg-half});
+        }
+      }
+
+      .academic-extra {
+        display: block;
+        transform: none;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          // animation: fade-in 0.8s ease-in;
+        }
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          // animation: education-content-unskew 0.75s ease-in, fade-in 0.8s ease-in;
+        }
+      }
+
+      >.more {
+        // XS Devices
+        background: $utrgv-orange;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          background: darken($utrgv-orange, 10%);
+        }
+      }
+
+      >.more:before {
+        // XS Devices
+        content: '\f106';
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          content: '\f104';
+        }
+      }
+    }
+
+    &.collapsed {
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        animation: education-academic-collapse-md 0.1s ease-out;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        animation: education-academic-collapse-lg 0.1s ease-out;
+      }
+    }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      transform: skewX(10deg);
+      background: $utrgv-orange;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        content: '';
+        width: calc(50vw - #{$screen-md-half});
+      }
+    }
+
+    >.more {
+      // background: #E9A591;
+      background: darken($utrgv-orange, 10%);
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
         right: 0;
       }
 
-      .nav-item-title {
-        // XS Devices
-        right: 150px;
+      &:hover {
 
-        // SM Devices
-        @media (min-width: $screen-sm-min) {
-          right: 200px;
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          background: #F6DBD3;
+          animation: academic-more-hover 0.2s linear;
         }
+      }
+
+      &:before {
+        content: '\f107';
 
         // MD Devices
-        @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-          right: 300px;
+        @media screen and (min-width: $screen-md-min) {
+          content: '\f105';
         }
       }
     }
-    
-    .nav-item-icon {
-      position: absolute;
-      display: inline-block;
-      border-radius: 100%;
-      background-color: $nav-item;
-      z-index: 1;
-      cursor: pointer;
-      
-      // XS Devices
-      width: 75px;
-      height: 75px;
+  }
 
-      // SM Devices 
-      @media (min-width: $screen-sm-min) {
-        width: 80px;
-        height: 80px;
+  .extracurricular-wrapper {
+    // position: absolute;
+    // left: 50%;
+    // width: 50vw;
+    background: $utrgv-gray;
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      transform: skewX(-10deg);
+      position: absolute;
+      left: 50%;
+      width: 50vw;
+    }
+
+    &.expanded {
+      transform: none;
+      left: 0;
+      z-index: 2;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        animation: education-extracurricular-expand-md 0.05s ease-out;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        animation: education-extracurricular-expand-lg 0.05s ease-out;
+      }
+
+      .extracurricular {
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          // display: none;
+          // width: 50vw;
+          left: unset;
+          right: calc(50vw - #{$screen-md-half});
+          animation: none;
+        }
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          width: $screen-lg-half;
+          right: calc(50vw - #{$screen-lg-half});
+        }
+      }
+
+      .extracurricular-extra {
+        display: block;
+        transform: none;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          position: absolute;
+          // animation: fade-in 0.8s ease-in;
+          // height: 100px;
+        }
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+
+        }
+      }
+
+      >.more {
+        background: $utrgv-gray;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+        background: darken($utrgv-gray, 10%);
+        }
+      }
+
+      >.more:before {
+        // XS Devices
+        content: '\f106';
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          content: '\f105';
+        }
+      }
+    }
+
+    &.collapsed {
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        animation: education-extracurricular-collapse-md 0.1s linear;
+      }
+    }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      transform: skewX(10deg);
+      background: $utrgv-gray;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        content: '';
+        width: calc(50vw - #{$screen-md-half});
+      }
+    }
+
+    >.more {
+      // background: #ACACAF;
+      background: darken($utrgv-gray, 10%);
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        left: 0;
+      }
+
+      &:hover {
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          background: #DEDDDF;
+          animation: extracurricular-more-hover 0.2s linear;
+        }
+      }
+
+      &:before {
+        content: '\f107';
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          content: '\f104';
+        }
+      }
+    }
+  }
+
+  .academic, .extracurricular {
+    position: relative;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: 'Lato', sans-serif;
+    color: #FFF;
+    z-index: 2;
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      position: absolute;
+      transform: skewX(10deg);
+      // width: 100%;
+      height: 430px;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      width: 50vw;
+    }
+  }
+
+  .academic-extra, .extracurricular-extra {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    box-sizing: border-box;
+    // right: 80px;
+    // margin: 0 80px 0 0;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.25;
+    color: #FFF;
+    z-index: 1;
+    overflow: hidden;
+
+    // XS Devices
+    font-size: 1em;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      font-size: 1.25em;
+    }
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      display: none;
+      position: absolute;
+      padding: 0 20px;
+      // width: calc(50vw - 80px);
+      width: $screen-md-half - 80px;
+      font-size: 1.5em;
+      font-weight: 300;
+    }
+
+    @media screen and (min-width: $screen-lg-min) {
+      // width: calc(50vw - 80px);
+      width: $screen-lg-half - 100px;
+      transform: skewX(10deg);
+    }
+
+    ul {
+      flex: 0;
+      margin: 0;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-right: 10px;
+    }
+
+    li + li {
+      margin-top: 10px;
+    }
+  }
+
+  .academic-extra {
+    // XS Devices
+    background: darken($utrgv-orange, 10%);
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      background: none;
+      left: 50vw;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      right: unset;
+      left: 50vw;
+    }
+  }
+
+  .extracurricular-extra {
+    // XS Devices
+    background: darken($utrgv-gray, 10%);
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      background: none;
+      right: 50vw;
+      z-index: 10;
+      // left: 0;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      left: unset;
+      right: 50vw;
+    }
+  }
+
+  .academic {
+    // right: 0;
+    // background: $utrgv-orange;
+    text-align: left;
+
+    // XS Devices
+    background: $utrgv-orange;
+    padding: 20px;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      // background: none;
+      width: $screen-md-half;
+      padding: 30px 40px 30px 30px;
+    }
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      left: calc(50vw - #{$screen-md-half} + 7.5px);
+      padding: 15px 40px 15px 15px;
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      left: calc(50vw - #{$screen-lg-half} + 7.5px);
+    }
+
+    .degree-title {
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+
+      // XS Devices
+      margin: 0;
+      font-size: 1.5em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 2.25em;
       }
 
       // MD Devices
-      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.875em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        font-size: 2.125em;
+      }
+    }
+
+    .degree-field {
+      margin: 5px 0 0 30px;
+      font-size: 2.25em;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+
+      // XS Devices
+      margin: 10px 0 0 0;
+      font-size: 1.5em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 2.25em;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.875em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        font-size: 2.125em;
+      }
+    }
+
+    .school-name {
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      margin: 10px 0 0 0;
+      font-size: 1.275em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 2em;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.5em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        font-size: 1.750em;
+      }
+    }
+
+    .school-location {
+      margin: 5px 0 0 30px;
+      font-size: 1.75em;
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      margin: 10px 0 0 0;
+      font-size: 1.275em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 2em;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.5em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        font-size: 1.625em;
+      }
+    }
+
+    .school-dates, .school-gpa {
+      display: block;
+      font-size: 1.5em;
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      font-size: 1.125em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 2em;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.5em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        font-size: 1.625em;
+      }
+    }
+
+    .school-dates {
+
+      // XS Devices
+      margin: 10px 0 0 0;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        margin: 10px 0 0 0;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        margin: 140px 0 0 0;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        margin: 180px 0 0 0;
+      }
+    }
+
+    .school-gpa {
+
+      // XS Devices
+      margin: 10px 0 0 0;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        margin: 5px 0 0 0;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        margin: 10px 0 0 0;
+      }
+    }
+  }
+
+  .extracurricular {
+    // background: $utrgv-gray;
+
+    // XS Devices
+    padding: 20px;
+    background: $utrgv-gray;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      // background: none;
+      padding: 30px;
+    }
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      // background: none;
+      right: calc(50vw - #{$screen-md-half});
+      width: $screen-md-half;
+      text-align: right;
+      padding: 15px 15px 15px 40px;
+      clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      right: calc(50vw - #{$screen-lg-half});
+    }
+
+    .extracurricular-title {
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+
+      // XS Devices
+      margin: 0;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 2.25em;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.875em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        font-size: 2.125em;
+      }
+
+      +.extracurricular-org {
+        // SM Devices
+        @media screen and (min-width: $screen-sm-min) {
+          margin: 35px 0 0 0;
+        }
+      }
+    }
+
+    .extracurricular-org {
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      margin: 10px 0 0 0;
+      font-size: 1.25em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        margin: 15px 0 0 0;
+        font-size: 2em;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.5em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        font-size: 1.750em;
+      }
+    }
+
+    .extracurricular-position {
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      margin: 5px 0 0 0;
+      font-size: 1.125em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 1.75em;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.5em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        margin: 10px 0 0 0;
+        font-size: 1.625em;
+      }
+    }
+
+    .extracurricular-dates {
+      display: block;
+      font-weight: 300;
+      line-height: 1;
+
+      // XS Devices
+      margin: 5px 0 0 0;
+      font-size: 1.125em;
+
+      // SM Devices
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 1.5em;
+      }
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        font-size: 1.5em;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        margin: 10px 0 0 0;
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+
+.skills {
+  display: flex;
+  flex-flow: row wrap;
+  // width: 100vw;
+  // justify-content: flex-end;
+  // align-items: flex-start;
+
+  .skill-wrapper {
+    flex: 1;
+    flex-basis: fill;
+    position: relative;
+    width: $screen-lg-half;
+    // max-width: 720px;
+    // background: #F7DF1E;
+    background: $lightgray;
+
+    font-family: 'Lato', sans-serif;
+    color: #FFF;
+
+    // XS Devices
+    min-width: 280px;
+
+    // SM Devices
+    @media screen and (min-width: $screen-sm-min) {
+      min-width: 350px;
+    }
+
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      min-width: 450px;
+
+      &:nth-of-type(2n-1) {
+        padding-left: calc(50% - #{$screen-md-half});
+      }
+
+      &:nth-of-type(2n) {
+        padding-right: calc(50% - #{$screen-md-half});
+      }
+    }
+
+    // LG Devices
+    @media screen and (min-width: $screen-lg-min) {
+      min-width: 500px;
+      height: 260px;
+
+      &:nth-of-type(2n-1) {
+        padding-left: calc(50% - #{$screen-lg-half});
+      }
+
+      &:nth-of-type(2n) {
+        padding-right: calc(50% - #{$screen-lg-half});
+      }
+    }
+
+    &.bg-pink {
+      background: $pink;
+
+      .skill-details {
+        background: darken($pink, 10%);
+      }
+    }
+
+    &.bg-purple {
+      background: $purple;
+
+      .skill-details {
+        background: darken($purple, 10%);
+      }
+    }
+
+    &.bg-cyan {
+      background: $cyan;
+
+      .skill-details {
+        background: darken($cyan, 10%);
+      }
+    }
+
+    .skill {
+      position: relative;
+      max-width: 950px;
+      height: 120px;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        height: 180px;
+      }
+
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        height: 260px;
+      }
+
+      &.expanded {
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          ~.skill-details {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            max-height: 500px;
+            animation: skill-details-expand-md 0.1s ease-out;
+          }
+        }
+      }
+
+      &.collapsed {
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          ~.skill-details {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            padding: 0;
+            max-height: 0;
+            animation: skill-details-collapse-md 0.1s ease-out;
+          }
+        }
+      }
+    }
+
+    .skill-details {
+      display: flex;
+      // height: 40px;
+      box-sizing: border-box;
+      background: darken($gray, 10%);
+      width: 100%;
+      padding: 10px;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        // display: none;
+        max-height: 0;
+      }
+
+      span {
+        flex: 1;
+        // width: 100%;
+
+        // LG Devices
+      }
+    }
+
+    .skill-icon {
+      display: block;
+      position: absolute;
+
+      // XS Devices
+      margin: 25px;
+      width: 70px;
+      height: 70px;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        margin: 30px;
         width: 120px;
         height: 120px;
       }
 
-      .fa {
-        text-align: center;
-        color: white;
-
-        // XS Devices
-        margin: 15px 0;
-        width: 75px;
-        font-size: 45px;
-        line-height: 45px;
-        
-        // SM Devices
-        @media (min-width: $screen-sm-min) {
-          margin: 15px 0;
-          width: 80px;
-          font-size: 50px;
-          line-height: 50px;
-        }
-
-        // MD Devices
-        @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-          margin: 20px 0;
-          width: 120px;
-          font-size: 80px;
-          line-height: 80px;
-        }
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        margin: 50px;
+        width: 160px;
+        height: 160px;
       }
 
-      &:hover {
-        transform: scale(1.2);
-      }
 
-      &.active {
-        transform: scale(1.1);
-      }
-
-      &.bg-cyan {
-        background-color: $cyan;
-
-        &.active {
-          border: 1px solid $cyan;
-          background-color: white;
-
-          .fa {
-            color: $cyan;
-          }
-        }
-      }
-
-      &.bg-red {
-        background-color: $red;
-
-        &.active {
-          border: 1px solid $red;
-          background-color: white;
-
-          .fa {
-            color: $red;
-          }
-        }
-      }
-
-      &.bg-purple {
-        background-color: $purple;
-
-        &.active {
-          border: 1px solid $purple;
-          background-color: white;
-
-          .fa {
-            color: $purple;
-          }
-        }
-      }
-
-      &.bg-green {
-        background-color: $green;
-
-        &.active {
-          border: 1px solid $green;
-          background-color: white;
-
-          .fa {
-            color: $green;
-          }
-        }
-      }
-
-      &.bg-orange {
-        background-color: $orange;
-
-        &.active {
-          border: 1px solid $orange;
-          background-color: white;
-
-          .fa {
-            color: $orange;
-          }
-        }
-      }
-    }
-
-    .nav-item-title {
-      position: absolute;
-      display: inline-block;
-      right: 0;
-      text-align: center;
-
-      // XS Devices
-      padding: 27.5px 0;
-      width: 150px;
-      font-size: 20px;
-      line-height: 20px;
-
-      // SM Devices
-      @media (min-width: $screen-sm-min) {
-        padding: 30px 0;
-        width: 200px;
-        font-size: 20px;
-        line-height: 20px;
-      }
-
-      // MD Devices
-      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-        padding: 42.5px 0;
-        width: 300px;
-        font-size: 35px;
-        line-height: 35px;
-      }
-    }
-  }
-
-  &.pin-left {
-    // XS Devices
-    width: 100%;
-
-    // SM Devices
-    @media (min-width: $screen-sm-min) {
-      width: 150px;
-    }
-
-    // MD Devices
-    @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-      width: 200px;
-    }
-    &:before {
-      display: none;
-    }
-
-    .nav-pinned-wrapper {
-      
-
-      // SM Devices
-      @media (min-width: $screen-sm-min) {
-        position: fixed;
-      }
-    }
-
-    .nav-item-wrapper {
-      &:before {
-        position: absolute;
-        width: 125px !important;
-      }
-
-      // XS Devices
-      width: 100%;
-
-      // SM Devices
-      @media (min-width: $screen-sm-min) {
-        width: 125px;
-      }
-
-      // MD Devices
-      @media (min-width: $screen-md-min) and (min-height: $nav-md-min-height) {
-        width: 200px;
-      }
-
-      &:before {
-        left: 0;
+      img {
+        display: block;
         width: 100%;
       }
     }
 
-    .nav-item-icon {
-      left: 50px;
-
-      // SM Devices 
-      @media (min-width: $screen-sm-min) {
-        right: 0;
-      }
-    }
-
-    .nav-item-title {
-      // XS Devices
-      position: absolute;
-      left: 150px !important;
-      text-align: left;
-
-      // SM Devices
-      @media (min-width: $screen-sm-min) {
-        position: relative;
-        display: none;
-      }
-    }
-  }
-}
-
-section {
-  flex: 1 0 0px;
-  position: relative;
-  font-family: 'Oxygen', sans-serif;
-
-  // XS Devices
-  margin: 0;
-
-  // SM Devices
-  @media (min-width: $screen-sm-min) {
-    border-left: 1px solid $border;
-    margin: 30px 30px 30px 0;
-  }
-
-  .section-heading {
-    position: relative;
-    padding: 10px 30px;
-
-    .section-title {
-      font-size: 30pt;
-      font-weight: 400;
-    }
-  }
-
-  .section-body {
-    padding: 10px 30px;
-    height: 100%;
-  }
-
-  .section-footer {
-
-  }
-
-  .console {
-    position: relative;
-    display: block;
-    padding: 0 0 0 5px;
-    height: 30px;
-    background-color: $console-bg;
-    color: $console-text;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 20px;
-    input {
-      position: absolute;
-      margin: 0;
-      padding: 4px 0;
-      border: 0;
-      left: 20px;
-      right: 0;
-      background-color: $console-bg;
-      color: $console-text;
-      font-family: 'Roboto Mono', monospace;
-      font-size: 16px;
-      outline: none;
-
-      &:focus {
-        outline: none;
-      }
-    }
-  }
-}
-
-.text-cyan {
-  color: $cyan;
-}
-
-.text-red {
-  color: $red;
-}
-
-.text-purple {
-  color: $purple;
-}
-
-.text-green {
-  color: $green;
-}
-
-.text-orange {
-  color: $orange;
-}
-
-.projects {
-  position: relative;
-
-  .project {
-    position: relative;
-
-    // XS Devices
-
-
-    // SM Devices
-    @media (min-width: $screen-sm-min) {
-      display: flex;
-    }
-
-    .project-img {
-      flex: 1 30%;
-      margin: 0 0 10px;
-      height: 150px;
-      overflow: hidden;
-
-      img {
-        max-width: 100%;
-      }
-    }
-
-    .project-details {
+    .skill-titles {
       display: flex;
       flex-direction: column;
-      flex: 0 70%;
+      position: absolute;
+      font-weight: 700;
 
-      // SM Devices
-      @media (min-width: $screen-sm-min) {
-        margin: 0 0 0 20px;
+      // XS Devices
+      justify-content: flex-start;
+      left: 120px;
+      margin: 25px 25px 35px 0;
+      height: 60px;
+      font-size: 1.25em;
+
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        justify-content: center;
+        left: 180px;
+        margin: 30px 30px 30px 0;
+        height: 120px;
+        font-size: 2em;
       }
 
-      .project-details-title {
-        flex: 0 1 auto;
-        margin: 0 0 5px 0;
-        font-size: 24pt;
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        justify-content: center;
+        left: 260px;
+        margin: 50px 50px 50px 0;
+        height: 160px;
+        font-size: 2.375em;
       }
 
-      .project-details-description {
-        flex: 1 0 auto;
-        font-size: 12pt;
-        line-height: 18pt;
-      }
+      span {
+        flex: 0;
+        padding: 5px;
+        line-height: 1;
 
-      .project-details-links {
-        flex: 0 1 auto;
-        margin: 5px 0 0 0;
-        bottom: 0;
-
-        a {
-          display: inline-block;
-          padding: 6px 12px;
-          border: 1px solid white;
-          border-radius: 6px;
-          text-decoration: none;
-          color: black;
-
-          &.bg-red {
-            background-color: $red;
-            color: white;
-
-            &:hover {
-              border: 1px solid $red;
-              background-color: white;
-              color: $red;
-            }
-          }
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          padding: 10px 0;
         }
       }
     }
 
-    +.project {
-      margin: 30px 0 0 0;
-    }
-  }
-
-}
-
-.posts {
-  margin: 0 auto;
-  // max-width: 50%;
-
-  // MD Devices
-  @media (min-width: $screen-md-min) {
-    max-width: 800px;
-  }
-  .post {
-    position: relative;
-    .timestamp {
-      margin: 0 0 5px 0;
-      color: $text-muted;
-      text-align: center;
+    .skill-experience {
+      display: block;
+      position: absolute;
+      text-align: right;
       text-transform: uppercase;
-    }
 
-    .post-title {
-      margin: 0 0 10px 0;
-      font-size: 24pt;
-    }
+      // XS Devices
+      right: 10px;
+      bottom: 10px;
 
-    .post-body {
-      margin: 0 0 10px 0;
-      font-size: 12pt;
-      line-height: 20pt;
-    }
-
-    .post-tags {
-      a {
-        display: inline-block;
-        padding: 3px 12px;
-        border: 1px solid white;
-        border-radius: 6px;
-        text-decoration: none;
-        color: black;
-
-        &.bg-purple {
-          background-color: $purple;
-          color: white;
-
-          &:hover {
-            border: 1px solid $purple;
-            background-color: white;
-            color: $purple;
-          }
-        }
+      // MD Devices
+      @media screen and (min-width: $screen-md-min) {
+        right: 20px;
+        bottom: 20px;
+        font-size: 1.125em;
       }
-    }
 
-    +.post {
-      margin: 50px 0 0 0;
-
-      &:before {
-        content: "";
-        position: absolute;
-        top: -25px;
-        left: 100px;
-        right: 100px;
-        height: 1px;
-        background-color: $border;
+      // LG Devices
+      @media screen and (min-width: $screen-lg-min) {
+        right: 30px;
+        bottom: 30px;
+        font-size: 1.5em;
       }
     }
   }
 }
 
-section.content {
-  position: relative;
-  >.post, >.project, >.page {
+.portfolio {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  // width: 100vw;
+
+  .project-wrapper {
+    flex: 1;
+    flex-basis: fill;
+    position: relative;
+    // min-width: 350px;
+    // max-width: 480px;
+    // width: 380px;
+    // height: 500px;
+    // height: 104%;
+    background: $gray;
+
     // XS Devices
-    padding: 0 20px 30px 20px;
+    min-width: 280px;
 
     // SM Devices
-    @media (min-width: $screen-sm-min) {
-      padding: 30px;
-    }
-    .post-title, .project-title, .page-title {
-      margin: 0 0 10px 0;
-      font-size: 24pt;
+    @media screen and (min-width: $screen-sm-min) and (max-width: $screen-md-min - 1) {
+      // width: 
+      min-width: 340px;
+      max-width: 380px;
+
+      &:nth-of-type(2n-1) {
+        padding-left: calc(50vw - #{$screen-sm-half});
+      }
+
+      &:nth-of-type(2n) {
+        padding-right: calc(50vw - #{$screen-sm-half});
+      }
     }
 
-    .project-img {
-      margin: 0 auto 10px auto;
-      // min-width: 80%;
-      max-width: 80%;
+    // MD Devices
+    @media screen and (min-width: $screen-md-min) {
+      // width: 460px;
+      min-width: 200px;
+      max-width: 460px;
+      &:nth-of-type(3n-2) {
+        padding-left: calc(50vw - #{$screen-md-half});
+      }
+
+      &:nth-of-type(3n) {
+        padding-right: calc(50vw - #{$screen-md-half});
+      }
+    }
+
+    // MD Devices
+    @media screen and (min-width: $screen-lg-min) {
+      // width: 460px;
+      min-width: 200px;
+      max-width: 460px;
+      &:nth-of-type(3n-2) {
+        padding-left: calc(50vw - #{$screen-lg-half});
+      }
+
+      &:nth-of-type(3n) {
+        padding-right: calc(50vw - #{$screen-lg-half});
+      }
+    }
+
+    &.bg-cyan {
+      background: $cyan;
+
+      .project, .project > .details > .project-title, .project > .actions > .action:hover {
+        background: $cyan;
+      }
+
+      .project > .details > .project-description {
+        background: darken($cyan, 10%);
+      }
+
+      .project > .actions .action {
+        background: darken($cyan, 10%);
+      }
+    }
+
+    &.bg-pink {
+      background: $pink;
+
+      .project, .project > .details >.project-title, .project > .actions > .action:hover {
+        background: $pink;
+      }
+
+      .project > .details > .project-description {
+        background: darken($pink, 10%);
+      }
+
+      .project > .actions .action {
+        background: darken($pink, 10%);
+      }
+    }
+
+    &.bg-purple {
+      background: $purple;
+
+      .project, .project > .details >.project-title, .project > .actions > .action:hover {
+        background: $purple;
+      }
+
+      .project > .details > .project-description {
+        background: darken($purple, 10%);
+      }
+
+      .project > .actions .action {
+        background: darken($purple, 10%);
+      }
+    }
+  }
+
+  .project {
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // height: 500px;
+    // height: 104%;
+    // height: 0;
+    // padding-bottom: 104%;
+    background: $gray;
+    overflow: hidden;
+
+    &.expanded {
+      .details {
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          position: absolute;
+          bottom: 0;
+        }
+      }
+
+      .details > .project-description {
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          display: flex;
+          max-height: 500px;
+          animation: education-expand-xs 0.2s ease-in-out;
+        }
+      }
+    }
+
+    &.collapsed {
+      .details {
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          animation: project-details-absolute-md 0.2s ease-out;
+        }
+      }
+
+      .details > .project-description {
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          max-height: 0;
+          animation: education-collapse-xs 0.2s ease-out;
+        }
+      }
+    }
+
+    .media {
+      flex: 1;
+      display: block;
+      width: 100%;
+      // height: 380px;
+      opacity: 0.75;
 
       img {
+        display: block;
         width: 100%;
       }
     }
 
-    .timestamp {
-      margin: 0 0 10px 0;
-      color: $text-muted;
-      text-transform: uppercase;
+    .details {
+      flex: 0;
+      // position: absolute;
+      bottom: 0;
+      // background: $gray;
+      font-family: 'Lato', sans-serif;
+      color: #FFF;
+      width: 100%;
+
+      .project-title {
+        // height: 120px;
+        // height: 25%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        // justify-content: center;
+        // height: 0;
+        // padding-bottom: 25%;
+        background: $gray;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        text-transform: uppercase;
+
+        // XS Devices
+        font-size: 1.75em;
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          font-size: 2.25em;
+        }
+
+        span {
+          flex: 0;
+          display: block;
+          width: 100%;
+          padding: 5% 0;
+          // padding: 42px 0;
+        }
+      }
+
+      .project-description {
+        flex-direction: column;
+        justify-content: center;
+        background: darken($gray, 10%);
+        font-weight: 300;
+        text-align: center;
+        overflow: hidden;
+
+        // XS Devices
+        display: flex;
+        font-size: 1.125em;
+
+        // MD Devices
+        @media screen and (min-width: $screen-md-min) {
+          // display: none;
+          // position: absolute;
+          // bottom: 0;
+          max-height: 0;
+          font-size: 1.125em;
+          height: 130px;
+        }
+
+        // LG Devices
+        @media screen and (min-width: $screen-lg-min) {
+          font-size: 1.5em;
+          height: 180px;
+        }
+
+        span {
+          flex: 0;
+          display: block;
+          // width: 440px;
+
+          // XS Devices
+          margin: 15px;
+
+          // LG Devices
+          @media screen and (min-width: $screen-lg-min) {
+            margin: 0 35px;
+          }
+        }
+      }
     }
 
-    .post-body, .project-body, .page-body {
-      margin: 0 0 10px 0;
-      font-size: 12pt;
-      line-height: 20pt;
-    }
+    .actions {
+      position: absolute;
+      top: 0;
+      left: 0;
 
-    .project-links {
-      a {
-        display: inline-block;
-        padding: 6px 12px;
-        border: 1px solid white;
-        border-radius: 6px;
-        text-decoration: none;
-        color: black;
+      .action {
+        display: block;
+        position: relative;
+        box-shadow: 0 0 4px #000;
+        background: #FFF;
+        cursor: pointer;
 
-        &.bg-red {
-          background-color: $red;
-          color: white;
+        // XS Devices
+        border-radius: 35px;
+        margin: 10px 0 0 10px;
+        width: 60px;
+        height: 60px;
 
-          &:hover {
-            border: 1px solid $red;
-            background-color: white;
-            color: $red;
+        &:hover {
+          background: $gray;
+        }
+
+        // // LG Devices
+        // @media screen and (min-width: $screen-lg-min) {
+        //   margin: 20px 0 0 0;
+        //   width: 70px;
+        //   height: 70px;
+        //   border-top-left-radius: 0;
+        //   border-bottom-left-radius: 0;
+        //   border-top-right-radius: 35px;
+        //   border-bottom-right-radius: 35px;
+        // }
+
+        // &:hover {
+        //   width: 250px;
+        //   animation: project-action-slide-right 0.1s linear;
+
+        //   .message {
+        //     display: flex;
+        //   }
+        // }
+
+        .icon {
+          display: block;
+          // position: absolute;
+
+          // XS Devices
+          // top: 10px;
+          // right: 10px;
+          // bottom: 10px;
+          padding: 10px;
+          width: 40px;
+
+          // // LG Devices
+          // @media screen and (min-width: $screen-lg-min) {
+          //   // top: 12px;
+          //   // right: 12px;
+          //   // bottom: 12px;
+          //   margin: 12px;
+          //   width: 46px;
+          // }
+
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+
+        .message {
+          display: none;
+          width: 180px;
+          height: 70px;
+          font-family: 'Lato', sans-serif;
+          font-size: 1.125em;
+          line-height: 1;
+          text-align: center;
+
+          span {
+            display: block;
+            width: 180px;
+            padding: 26px 0;;
           }
         }
       }
@@ -705,154 +2700,543 @@ section.content {
   }
 }
 
-section.pin-left {
-  margin: 0 0 0 30px;
-  top: 0;
-  bottom: 0;
-
-  // XS Devices
-  display: none;
-
-  // SM Devices
-  @media (min-width: $screen-sm-min) {
-    flex: 0 1 250px;
-    width: 250px;
+@keyframes experience-more-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(1);
   }
 
-  // MD Devices
-  @media (min-width: $screen-md-min) {
-    display: block;
-    flex: 0 1 300px;
-    width: 300px;
+  20% {
+    opacity: 0.75;
   }
 
-  ~.content {
-    margin-left: 0;
+  100% {
+    opacity: 0;
+    transform: scale(1.75);
+  }
+}
+
+@keyframes experience-more-grow {
+  0% {
+    // opacity: 0.7;
+    transform: translateX(0);
   }
 
-  .listing-pinned-wrapper {
-    position: fixed;
-    max-height: 100%;
-    overflow-y: auto;
+  100% {
+    // opacity: 1;
+    transform: translateX(-10px);
+  }
+}
 
-    // SM Devices
-    @media (min-width: $screen-sm-min) {
-      width: 250px;
-    }
-
-    // MD Devices
-    @media (min-width: $screen-md-min) {
-      width: 300px;
-    }
+@keyframes experience-more-visible {
+  0% {
+    opacity: 0.7;
   }
 
-  .section-heading {
-    padding-right: 0;
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes experience-more-expand {
+  0% {
+    left: calc(50vw - #{$screen-lg-half} + 1225px);
   }
 
-  .section-body {
+  100% {
+    left: calc(50vw - #{$screen-lg-half} + 150px);
+  }
+}
+
+@keyframes experience-more-circle-expand {
+  0% {
+    opacity: 0.7;
+    top: -75px;
+    width: 450px;
+    height: 450px;
+  }
+
+  25% {
+    top: -600px;
+    width: 1500px;
+    height: 1500px;
+  }
+
+  100% {
+    opacity: 1;
+    width: 1500px;
+    height: 1500px;
+  }
+}
+
+@keyframes academic-more-hover {
+  0% {
+    background: #E9A591;
+    width: 80px;
+  }
+
+  100% {
+    background: #F6DBD3;
+    width: 120px;
+  }
+}
+
+@keyframes extracurricular-more-hover {
+  0% {
+    background: #ACACAF;
+    width: 80px;
+  }
+
+  100% {
+    background: #DEDDDF;
+    width: 120px;
+  }
+}
+
+@keyframes academic-expand {
+  0% {
+    width: 50vw;
+    right: 50%;
+  }
+
+  100% {
+    width: 100vw;
+    right: 0;
+  }
+}
+
+@keyframes academic-content-static {
+  0% {
+    right: 0;
+  }
+
+  100% {
+    right: -8px;
+    // right: calc(50vw - 8px);
+    // right: 50%;
+  }
+}
+
+@keyframes extracurricular-expand {
+  0% {
+    width: 50vw;
+    left: 50%;
+  }
+
+  100% {
+    width: 100vw;
+    left: 0;
+  }
+}
+
+@keyframes extracurricular-content-static {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    right: -8px;
+    // right: calc(50vw - 8px);
+    // left: 50%;
+  }
+}
+
+@keyframes education-wrappers-unskew {
+  0% {
+    transform: skewX(-10deg);
+  }
+
+  100% {
+    transform: skewX(0);
+  }
+}
+
+@keyframes education-content-unskew {
+  0% {
+    transform: skewX(10deg);
+  }
+
+  100% {
+    transform: skewX(0);
+  }
+}
+
+@keyframes project-details-slide-up {
+  0% {
+    bottom: -180px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes project-action-slide-right {
+  0% {
+    left: -180px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes heading-more-hover {
+  0%, 100% {
+    background: #EEE;
+    color: #CCC;
+  }
+
+  50% {
+    background: #CCC;
+    color: #EEE;
+  }
+}
+
+@keyframes nav-item-arrow-rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes v-card-slide-up {
+  0% {
+    top: 120px;
+  }
+
+  100% {
+    top: -340px;
+  }
+}
+
+@keyframes header-bg-slide-up {
+  0% {
+    height: 380px;
+  }
+
+  100% {
+    // top: initial;
+    height: 140px;
+  }
+}
+
+@keyframes header-bg-slide-up-sm {
+  0% {
+    height: 380px;
+  }
+
+  100% {
+    // top: initial;
+    height: 100px;
+  }
+}
+
+@keyframes header-quote-more-hide {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+    // height: 0;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes nav-item2-collapse {
+  0% {
+    border-top: 1px solid $lightgray;
+    transform: translateY(100%);
+  }
+
+  100% {
+    border-top: 1px solid $lightgray;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes nav-item3-collapse {
+  0% {
+    border-top: 1px solid $lightgray;
+    transform: translateY(200%);
+  }
+
+  100% {
+    border-top: 1px solid $lightgray;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes nav-item4-collapse {
+  0% {
+    border-top: 1px solid $lightgray;
+    transform: translateY(300%);
+  }
+
+  100% {
+    border-top: 1px solid $lightgray;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes nav-item5-collapse {
+  0% {
+    border-top: 1px solid $lightgray;
+    transform: translateY(400%);
+  }
+
+  100% {
+    border-top: 1px solid $lightgray;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes header-keep-static {
+  0%, 100% {
     position: relative;
-    // margin-right: -30px;
-    padding: 0;
-    // max-height: 80%;
+    // position: absolute;
+  }
+}
+
+@keyframes content-keep-in-place {
+  0%, 100% {
+    position: absolute;
+    top: 100vh;
+    transform: none;
+  }
+}
+
+@keyframes content-slide-in {
+  0% {
+    position: absolute;
+    top: 100vh;
   }
 
-  .projects {
-    >a {
-      display: block;
-      text-decoration: none;
-    }
-    
-    .project {
-      display: block;
-      padding: 10px 10px 0 10px;
-      height: auto;
-      cursor: pointer;
+  100% {
+    position: absolute;
+    // top: 140px;
+    top: 140px;
+  }
+}
 
+@keyframes footer-hide {
+  0%, 100% {
+    opacity: 0;
+    transform: none;
+  }
+}
 
-      &.active {
-        background-color: lighten($red, 20%);
-        pointer-events: none;
-      }
-
-      &:hover {
-        background-color: lighten($red, 25%);
-      }
-
-      +.project {
-        margin: 0;
-
-        &:before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 1px;
-          background-color: $border;
-        }
-      }
-    }
-
-    .project-img {
-      height: 120px;
-    }
-
-    .project-details {
-      margin: 0;
-
-      .project-details-title {
-        font-size: 18pt;
-      }
-
-      .project-details-description {
-        display: none;
-      }
-
-      .project-details-links {
-        display: none;
-      }
-    }
+@keyframes fade-in {
+  0% {
+    opacity: 0;
   }
 
-  .posts {
-    margin: 0;
-    min-width: 100%;
+  100% {
+    opacity: 1;
+  }
+}
 
-    .post {
-      padding: 15px 10px 5px 10px;
-      cursor: pointer;
+// Mobile Animations
+@keyframes education-expand-xs {
+  0% {
+    max-height: 0;
+    // transform: translateY(-100%);
+  }
 
-      &.active {
-        background-color: lighten($purple, 22.5%);
-        pointer-events: none;
-      }
+  100% {
+    max-height: 500px;
+    // transform: translateY(0);
+  }
+}
 
-      &:hover {
-        background-color: lighten($purple, 27.5%);
-      }
+@keyframes education-collapse-xs {
+  0% {
+    max-height: 500px;
+    // transform: translateY(-100%);
+  }
 
-      +.post {
-        margin: 0;
+  100% {
+    max-height: 0;
+    // transform: translateY(0);
+  }
+}
 
-        &:before {
-          top: 0;
-          left: 0;
-          right: 0;
-        }
-      }
-    }
+// MD Device Animations
+@keyframes job-experience-summary-expand-md {
+  0% {
+    transform: translateX(100%);
+  }
 
-    .post-title {
-      font-size: 18pt;
-    }
+  100% {
+    transform: translateX(0);
+  }
+}
 
-    .post-body {
-      display: none;
-    }
+@keyframes job-experience-summary-collapse-md {
+  0% {
+    min-height: 500px;
+    position: absolute;
+    transform: translateX(0);
+    z-index: 5;
+  }
 
-    .post-more {
-      display: none;
-    }
+  100% {
+    min-height: 500px;
+    position: absolute;
+    transform: translateX(100%);
+    z-index: 5;
+  }
+}
+
+@keyframes education-academic-expand-md {
+  0% {
+    right: unset;
+    left: 0;
+    width: 50vw;
+  }
+
+  100% {
+    right: unset;
+    left: 0;
+    width: 100%;
+  }
+}
+
+@keyframes education-extracurricular-expand-md {
+  0% {
+    left: unset;
+    right: 0;
+    width: 50vw;
+  }
+
+  100% {
+    left: unset;
+    right: 0;
+    width: 100%;
+  }
+}
+
+@keyframes education-academic-collapse-md {
+  0% {
+    right: unset;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+  }
+
+  100% {
+    right: unset;
+    left: 0;
+    width: 50vw;
+    z-index: 5;
+  }
+}
+
+@keyframes education-extracurricular-collapse-md {
+  0% {
+    left: unset;
+    right: 0;
+    width: 100%;
+  }
+
+  100% {
+    left: unset;
+    right: 0;
+    width: 50vw;
+  }
+}
+
+@keyframes skill-details-expand-md {
+  0% {
+    // padding: 0;
+    max-height: 0;
+  }
+
+  100% {
+    // padding: 10px;
+    max-height: 500px;
+  }
+}
+
+@keyframes skill-details-collapse-md {
+  0% {
+    padding: 10px 10px;
+    max-height: 500px;
+  }
+
+  100% {
+    padding: 0 10px;
+    max-height: 0;
+  }
+}
+
+@keyframes project-details-absolute-md {
+  0%, 100% {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+// LG Device Animations
+@keyframes education-academic-expand-lg {
+  0% {
+    right: unset;
+    left: 0;
+    width: 50vw;
+  }
+
+  100% {
+    right: unset;
+    left: 0;
+    width: 100%;
+  }
+}
+
+@keyframes education-extracurricular-expand-lg {
+  0% {
+    left: unset;
+    right: 0;
+    width: 50vw;
+  }
+
+  100% {
+    left: unset;
+    right: 0;
+    width: 100%;
+  }
+}
+
+@keyframes education-academic-collapse-lg {
+  0% {
+    right: unset;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+  }
+
+  100% {
+    right: unset;
+    left: 0;
+    width: 50vw;
+    z-index: 5;
+  }
+}
+
+@keyframes education-extracurricular-collapse-lg {
+  0% {
+    left: unset;
+    right: 0;
+    width: 100%;
+  }
+
+  100% {
+    left: unset;
+    right: 0;
+    width: 50vw;
   }
 }

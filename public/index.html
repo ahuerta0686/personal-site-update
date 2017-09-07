@@ -1,217 +1,384 @@
 <!doctype html>
 <html>
   <head>
-    <title>cyanberry.io</title>
+    <title>Alejandro Huerta - alexhuerta.me</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link rel="stylesheet" href="styles/main.css">
+    <!-- <base href="/test/"> -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
   </head>
 
   <body>
-    <aside class="about-aside" style="display: none">
-      <div class="about-img">
-        <img src="http://placehold.it/600x600" alt="">
+    <div class="header no-js" id="home">
+      <div class="navigation-wrapper">
+        <div class="navigation">
+          <a href="#home" class="nav-item active">
+            <span>Home</span>
+          </a>
+          <a href="#work-experience" class="nav-item">
+            <span>Work Experience</span>
+          </a>
+          <a href="#education" class="nav-item">
+            <span>Education</span>
+          </a>
+          <a href="#skills" class="nav-item">
+            <span>Skills</span>
+          </a>
+          <a href="#portfolio" class="nav-item">
+            <span>Portfolio</span>
+          </a>
+        </div>
       </div>
-    </aside>
-    <nav class="tree-nav pin-left">
-      <div class="nav-pinned-wrapper">
-        <div class="nav-item-wrapper">
-          <span class="nav-item-icon bg-cyan active"><i class="fa fa-bars"></i></span>
-          <span class="nav-item-title">cyanberry.io</span>
+      <div class="social-wrapper">
+        <div class="social">
+          <div class="social-item">
+            <span></span>
+          </div>
+          <div class="social-item">
+            <span></span>
+          </div>
+          <div class="social-item">
+            <span></span>
+          </div>
         </div>
-        <div class="nav-item-wrapper icon-right">
-          <span class="nav-item-icon bg-red"><i class="fa fa-wrench"></i></span>
-          <span class="nav-item-title">Projects</span>
-        </div>
-
-        <div class="nav-item-wrapper icon-right">
-          <span class="nav-item-icon bg-purple"><i class="fa fa-book"></i></span>
-          <span class="nav-item-title">Blog</span>
-        </div>
-
-        <div class="nav-item-wrapper icon-right">
-          <span class="nav-item-icon bg-green"><i class="fa fa-pencil"></i></span>
-          <span class="nav-item-title">Design</span>
-        </div>
-
-        <div class="nav-item-wrapper icon-right">
-          <span class="nav-item-icon bg-orange"><i class="fa fa-comments-o"></i></span>
-          <span class="nav-item-title">Contact</span>
-        </div>
-        
       </div>
-    </nav>
-
-    <section class="listing pin-left" id="projects">
-      <!-- <section id="projects" style="display: none"> -->
-      <div class="listing-pinned-wrapper">
-        <div class="section-heading">
-          <div class="section-title text-red">Projects</div>
+      <div class="quote">
+        <span>Hello there.</span>
+      </div>
+      <div class="more">
+        <i class="fa fa-angle-down"></i>
+      </div>
+    </div>
+    <div class="v-card">
+      <div class="card-avatar">
+        <img src="http://placehold.it/1000x1000" alt="">
+      </div>
+      <div class="card-info">
+        <h1 class="info-name">Alejandro Huerta</h1>
+        <h2 class="info-tagline">alexhuerta.me</h2>
+        <div class="info-social">
+          <div class="social-item"><i class="fa fa-map-marker"></i> Austin, TX</div>
+          <div class="social-item"><i class="fa fa-envelope"></i> ahuerta0686@gmail.com</div>
+          <div class="social-item"><i class="fa fa-linkedin"></i> Alejandro Huerta</div>
+          <div class="social-item"><i class="fa fa-github"></i> ahuerta0686</div>
         </div>
-        <div class="section-body">
-          <div class="projects">
-            <div class="project active">
-              <div class="project-img">
-                <img src="http://placehold.it/1000x1000" alt="">
-              </div>
-              <div class="project-details">
-                <div class="project-details-title">LED Strip</div>
-                <div class="project-details-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis et sed quas. Minus quis, cum autem architecto ducimus, libero dolor eligendi obcaecati atque. Tempora quibusdam sunt ratione eius itaque, temporibus fugit natus, neque totam officiis enim alias aspernatur officia nobis laborum soluta, eum ducimus magni animi adipisci nisi! Ducimus, excepturi?</div>
-                <div class="project-details-links">
-                  <a href="#" class="bg-red"><i class="fa fa-window-maximize"></i> Demo</a>
-                  <a href="#" class="bg-red"><i class="fa fa-github"></i> GitHub</a>
-                </div>
-              </div>
-            </div>
+        <div class="info-resume-download">
+          <a href="#"><i class="fa fa-file-pdf-o"></i> Download Resume</a>
+        </div>
+      </div>
+    </div>
 
-            <div class="project">
-              <div class="project-img">
-                <img src="http://placehold.it/1000x1000" alt="">
-              </div>
-              <div class="project-details">
-                <div class="project-details-title">Long Project Title to Test Overflow</div>
-                <div class="project-details-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis et sed quas. Minus quis, cum autem architecto ducimus, libero dolor eligendi obcaecati atque. Tempora quibusdam sunt ratione eius itaque, temporibus fugit natus, neque totam officiis enim alias aspernatur officia nobis laborum soluta, eum ducimus magni animi adipisci nisi! Ducimus, excepturi?</div>
-                <div class="project-details-links">
-                  <a href="#">GitHub</a>
-                </div>
-              </div>
-            </div>
-
-            <a href="#">
-              <div class="project">
-                <div class="project-img">
-                  <img src="http://placehold.it/1000x1000" alt="">
-                </div>
-                <div class="project-details">
-                  <div class="project-details-title">Long Project Title to Test Overflow</div>
-                  <div class="project-details-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis et sed quas. Minus quis, cum autem architecto ducimus, libero dolor eligendi obcaecati atque. Tempora quibusdam sunt ratione eius itaque, temporibus fugit natus, neque totam officiis enim alias aspernatur officia nobis laborum soluta, eum ducimus magni animi adipisci nisi! Ducimus, excepturi?</div>
-                  <div class="project-details-links">
-                    <a href="#">GitHub</a>
-                  </div>
-                </div>
-              </div>
+    <!-- Test -->
+  
+    <div class="content">
+      <div class="job-experience-heading" id="work-experience">
+        <h1 class="title">Work Experience</h1>
+      </div>
+      <div class="job-experience bg-pink collapsed">
+        <div class="media">
+          <div class="album">
+            <div class="image-left">
               
-            </a>
-
-            <div class="project">
-              <div class="project-img">
-                <img src="http://placehold.it/1000x1000" alt="">
-              </div>
-              <div class="project-details">
-                <div class="project-details-title">Long Project Title to Test Overflow</div>
-                <div class="project-details-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis et sed quas. Minus quis, cum autem architecto ducimus, libero dolor eligendi obcaecati atque. Tempora quibusdam sunt ratione eius itaque, temporibus fugit natus, neque totam officiis enim alias aspernatur officia nobis laborum soluta, eum ducimus magni animi adipisci nisi! Ducimus, excepturi?</div>
-                <div class="project-details-links">
-                  <a href="#">GitHub</a>
-                </div>
-              </div>
             </div>
-
-            <div class="project">
-              <div class="project-img">
-                <img src="http://placehold.it/1000x1000" alt="">
-              </div>
-              <div class="project-details">
-                <div class="project-details-title">Long Project Title to Test Overflow</div>
-                <div class="project-details-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis et sed quas. Minus quis, cum autem architecto ducimus, libero dolor eligendi obcaecati atque. Tempora quibusdam sunt ratione eius itaque, temporibus fugit natus, neque totam officiis enim alias aspernatur officia nobis laborum soluta, eum ducimus magni animi adipisci nisi! Ducimus, excepturi?</div>
-                <div class="project-details-links">
-                  <a href="#">GitHub</a>
-                </div>
-              </div>
+            <div class="image-main">
+              
+            </div>
+            <div class="image-right">
+              
             </div>
           </div>
         </div>
-        <div class="section-footer">
-        
+        <div class="details">
+          <h2 class="job-title">Full-Stack Developer</h2>
+          <h3 class="job-company">DrivingQuest</h3>
+          <h4 class="job-location">McAllen, TX / Remote</h4>
+          <span class="job-dates">December 2015 - September 2017</span>
         </div>
-      
-        
+        <div class="summary">
+          <ul>
+            <li>Launched a web application for taking online driver's education in the state of Texas</li>
+            <li>Developed in Angular (4.x) and Laravel (5.4)</li>
+            <li>Development was my primary role but I also had some creative freedom with the design</li>
+          </ul>
+        </div>
+        <div class="more">
+          <div class="animation"></div>
+          <span><i class="fa fa-angle-down"></i></span>
+          </ul>
+        </div>
+        <div class="less"></div>
       </div>
-      <!-- <div class="console">><input type="text"></div> -->
-    </section>
-
-    <!-- <section class="listing pin-left" id="blog"> -->
-    <section class="listing" id="blog" style="display: none">
-      <div class="listing-pinned-wrapper">
-        <div class="section-heading">
-          <div class="section-title text-purple">Blog</div>
-        </div>
-        <div class="section-body">
-          <div class="posts">
-            <div class="post">
-              <div class="timestamp">Tue Jan 01 2017 at 12:00AM</div>
-              <div class="post-title">My Blog Title</div>
-              <div class="post-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ipsum error explicabo nostrum quam vitae aspernatur atque commodi dolorum quis libero, eum eligendi, officia cupiditate? Atque nulla culpa modi eius asperiores blanditiis fugiat, rerum, molestiae quam doloremque et alias, ipsa obcaecati perferendis incidunt. Iusto libero magni dignissimos eos adipisci aspernatur voluptate alias, mollitia, voluptatum corporis officia deserunt sapiente maxime accusamus voluptatibus quae qui natus esse possimus! Amet beatae nihil cum quaerat saepe expedita autem natus iusto laborum ipsum facere ab molestias nostrum id sequi, voluptates eum eaque excepturi pariatur facilis. Ducimus rem, quis similique rerum neque, eligendi deserunt? Enim, nulla!</div>
-              <div class="post-tags" style="display: none">
-                <span>Tags: </span>
-                <a href="#" class="bg-purple">Test</a>
-              </div>
+      <div class="job-experience bg-purple collapsed">
+        <div class="media">
+          <div class="album">
+            <div class="image-left">
+              
             </div>
-
-            <div class="post active">
-              <div class="timestamp">Tue Jan 01 2017 at 12:00AM</div>
-              <div class="post-title">My Blog Title Longer Title Example</div>
-              <div class="post-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ipsum error explicabo nostrum quam vitae aspernatur atque commodi dolorum quis libero, eum eligendi, officia cupiditate? Atque nulla culpa modi eius asperiores blanditiis fugiat, rerum, molestiae quam doloremque et alias, ipsa obcaecati perferendis incidunt. Iusto libero magni dignissimos eos adipisci aspernatur voluptate alias, mollitia, voluptatum corporis officia deserunt sapiente maxime accusamus voluptatibus quae qui natus esse possimus! Amet beatae nihil cum quaerat saepe expedita autem natus iusto laborum ipsum facere ab molestias nostrum id sequi, voluptates eum eaque excepturi pariatur facilis. Ducimus rem, quis similique rerum neque, eligendi deserunt? Enim, nulla!</div>
+            <div class="image-main">
+              
             </div>
-
-            <div class="post">
-              <div class="timestamp">Tue Jan 01 2017 at 12:00AM</div>
-              <div class="post-title">My Blog Title Longer Title Example</div>
-              <div class="post-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ipsum error explicabo nostrum quam vitae aspernatur atque commodi dolorum quis libero, eum eligendi, officia cupiditate? Atque nulla culpa modi eius asperiores blanditiis fugiat, rerum, molestiae quam doloremque et alias, ipsa obcaecati perferendis incidunt. Iusto libero magni dignissimos eos adipisci aspernatur voluptate alias, mollitia, voluptatum corporis officia deserunt sapiente maxime accusamus voluptatibus quae qui natus esse possimus! Amet beatae nihil cum quaerat saepe expedita autem natus iusto laborum ipsum facere ab molestias nostrum id sequi, voluptates eum eaque excepturi pariatur facilis. Ducimus rem, quis similique rerum neque, eligendi deserunt? Enim, nulla!</div>
-            </div>
-
-            <div class="post">
-              <div class="timestamp">Tue Jan 01 2017 at 12:00AM</div>
-              <div class="post-title">My Blog Title Longer Title Example</div>
-              <div class="post-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ipsum error explicabo nostrum quam vitae aspernatur atque commodi dolorum quis libero, eum eligendi, officia cupiditate? Atque nulla culpa modi eius asperiores blanditiis fugiat, rerum, molestiae quam doloremque et alias, ipsa obcaecati perferendis incidunt. Iusto libero magni dignissimos eos adipisci aspernatur voluptate alias, mollitia, voluptatum corporis officia deserunt sapiente maxime accusamus voluptatibus quae qui natus esse possimus! Amet beatae nihil cum quaerat saepe expedita autem natus iusto laborum ipsum facere ab molestias nostrum id sequi, voluptates eum eaque excepturi pariatur facilis. Ducimus rem, quis similique rerum neque, eligendi deserunt? Enim, nulla!</div>
+            <div class="image-right">
+              
             </div>
           </div>
         </div>
-        
+        <div class="details">
+          <h2 class="job-title">Undergraduate Researcher</h2>
+          <h3 class="job-company">University of Maryland - College Park</h3>
+          <h4 class="job-location">College Park, MD</h4>
+          <span class="job-dates">June 2015 - August 2015</span>
+        </div>
+        <div class="summary">
+          <ul>
+            <li>Studied game theory algorithms such as minimax and Monte Carlo tree search</li>
+            <li>Implemented a digital version of the board game Can't Stop using C++ and SDL2</li>
+            <li>Produced various AIs for the game, one of which was a probability and risk assessment based AI</li>
+          </ul>
+        </div>
+        <div class="more">
+          <div class="animation"></div>
+          <span><i class="fa fa-angle-down"></i></span>
+        </div>
+        <div class="less"></div>
       </div>
-    </section>
+      <div class="job-experience bg-pink collapsed">
+        <div class="media">
+          <div class="album">
+            <div class="image-left">
+              
+            </div>
+            <div class="image-main">
+              
+            </div>
+            <div class="image-right">
+              
+            </div>
+          </div>
+        </div>
+        <div class="details">
+          <h2 class="job-title">Research Assistant</h2>
+          <h3 class="job-company">University of Texas Rio Grande Valley</h3>
+          <h4 class="job-location">Edinburg, TX</h4>
+          <span class="job-dates">June 2014 - May 2015</span>
+        </div>
+        <div class="summary">
+          <ul>
+            <li>Studied the field of tile based algorithmic self-assembly</li>
+            <li>Co-developed software to simulate various models of tile self-assembly</li>
+            <li>Worked in a team to produce two published research papers</li>
+          </ul>
+        </div>
+        <div class="more">
+          <div class="animation"></div>
+          <span><i class="fa fa-angle-down"></i></span>
+        </div>
+        <div class="less"></div>
+      </div>
 
-    <!-- <section class="content" id="blog-post"> -->
-    <section class="content" id="blog-post" style="display: none">
-      <div class="post">
-        <div class="post-title">My Blog Title Longer Title Example</div>
-        <div class="timestamp">Tue Jan 01 2017 at 12:00AM</div>
-        <div class="post-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime perspiciatis, quaerat, obcaecati numquam optio doloremque nisi dolor cum quas a necessitatibus debitis dignissimos accusamus quia exercitationem culpa nostrum ab aliquam, omnis sed temporibus odio vel suscipit cupiditate! Itaque praesentium sit quam, harum et pariatur cum rerum. Dolore rerum illo, in accusamus iure doloremque asperiores officia eveniet. Et at nobis quidem saepe dignissimos inventore eum nam explicabo soluta possimus accusamus, ipsum commodi earum natus placeat quas aliquam, quae rem, iste molestiae incidunt, nulla ipsa amet assumenda. Recusandae enim in quaerat quidem nulla obcaecati reiciendis, illum, minima assumenda nostrum maxime harum veritatis!
+      <div class="education-heading" id="education">
+        <h1 class="title">Education</h1>
+      </div>
+      <div class="education">
+        <div class="academic-wrapper collapsed">
+          <div class="academic">
+            <h2 class="degree-title">Bachelor of Science,</h2>
+            <h2 class="degree-field">Computer Science</h2>
+            <h3 class="school-name">University of Texas Rio Grande Valley</h3>
+            <h4 class="school-location">Edinburg, TX</h4>
+            <span class="school-dates">August 2013 - December 2016</span>
+            <span class="school-gpa">GPA: 3.63</span>
+          </div>
+          <div class="academic-extra">
+            <ul>
+              <li>Noteworthy Classes: Artificial Intelligence, Data Structures and Algorithms, Game Development, Internet Programming, Systems Programming</li>
+              <li>Divided my time between student organizations, research, work, and classes</li>
+            </ul>
+          </div>
+          <div class="more"></div>
+        </div> 
+        <div class="extracurricular-wrapper collapsed">
+          <div class="extracurricular">
+            <h2 class="extracurricular-title">Extracurriculars</h2>
+            <h3 class="extracurricular-org">Association for Computing Machinery</h3>
+            <h4 class="extracurricular-position">President, UTRGV Chapter</h4>
+            <span class="extracurricular-dates">2016</span>
+            <h3 class="extracurricular-org">Hack and Make Creative Coalition</h3>
+            <h4 class="extracurricular-position">President / Co-Founder</h4>
+            <span class="extracurricular-dates">2015 - 2016</span>
+            <h3 class="extracurricular-org">Association for Computing Machinery</h3>
+            <h4 class="extracurricular-position">Event Coordinator</h4>
+            <span class="extracurricular-dates">2014 - 2016</span>
+          </div>
+          <div class="extracurricular-extra">
+            <ul>
+              <li>Organized various trips and events such as CSSRD, Computer Science Student Research Day.</li>
+              <li>Encouraged students to seek knowledge in industry topics through technical workshops on Git, GitHub, IoT, Node.js, and Angular.</li>
+              <li>Hosted recruitment events on campus for students</li>
+            </ul>
+          </div>
+          <div class="more"></div>
         </div>
       </div>
-    </section>
 
-    <section class="content" id="project-item">
-    <!-- <section class="content" id="project-item" style="display: none"> -->
-      <div class="project">
-        <div class="project-title">LED Strip</div>
-        <div class="project-img">
-          <img src="http://placehold.it/1000x500" alt="">
-        </div>
-        <div class="project-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos repellat, necessitatibus rem. Quo reprehenderit, adipisci laborum minus culpa quidem quibusdam dolorum soluta sit ipsam tempora quam iure debitis dignissimos ducimus tenetur placeat eligendi mollitia impedit perspiciatis iusto fuga, dolor labore animi! Impedit porro molestias, ea pariatur reprehenderit facilis non ex et rerum expedita magnam earum iure, maxime ullam quas. Porro provident perspiciatis iure expedita soluta perferendis fuga vitae optio architecto ducimus, excepturi! Neque sunt, quas repellendus dolorem sapiente incidunt quia sint eaque in. Nesciunt sit esse, omnis, vel unde eligendi numquam accusantium possimus minus quis repudiandae ducimus dignissimos quo eum.</div>
-        <div class="project-links">
-          <a href="#" class="bg-red"><i class="fa fa-github"></i> GitHub</a>
-          <a href="#" class="bg-red"><i class="fa fa-window-maximize"></i> Demo</a>
-        </div>
+      <div class="skills-heading" id="skills">
+        <h1 class="title">Skills</h1>
       </div>
-    </section>
+      <div class="skills">
+        <div class="skill-wrapper bg-cyan">
+          <div class="skill">
+            <div class="skill-icon">
+              <img src="img/skills/JS.png" alt="">
+            </div>
+            <div class="skill-titles">
+              <span>JavaScript</span>
+              <span>TypeScript</span>
+            </div>
+            <div class="skill-experience">
+              <span>2 years experience</span>
+            </div>
+          </div>
+          <div class="skill-details">
+            <span>Lorem ipsum dolor sit amet, consectetur.</span>
+          </div>
+        </div>
 
-    <section class="content" id="design-page" style="display: none">
-      <div class="page">
-        <div class="page-title text-green">About</div>
-        <div class="page-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A veniam nobis voluptatibus quo, illo excepturi hic cum voluptate laudantium non nihil, ducimus itaque adipisci et, expedita ipsa fugiat earum! Nesciunt corporis necessitatibus natus eveniet, quasi ullam. Dolore harum, aperiam laudantium velit ducimus doloremque rerum nam, quae temporibus vel inventore! Porro optio rem facilis quasi aliquam ab, unde aut dolores impedit temporibus error debitis reiciendis dicta molestiae vitae, sed, aliquid veniam similique quia! Eveniet eos, iusto ab dolorem repellendus voluptatibus unde magni ipsam similique, accusamus consectetur dolor repudiandae soluta provident quis voluptatem modi. Minus totam corporis accusantium maxime labore, fugit, porro nisi! Accusantium voluptas assumenda, at rem cum. Consectetur quisquam excepturi cum beatae, alias eos? Tenetur ducimus deserunt sit laborum possimus dolorum, corporis reprehenderit est. Nulla praesentium dicta voluptate facilis eligendi, enim, mollitia quo quia beatae, similique commodi placeat doloribus eius modi repellendus illum. Aliquam quae repudiandae eum veritatis nisi dolorum ut magni magnam voluptates voluptas minus deserunt excepturi numquam officiis laborum sed aspernatur nostrum est incidunt atque, ipsam ex. Voluptate libero eius non, perspiciatis maiores illum. Repellat, labore esse error cum, ad corrupti voluptatum illum excepturi, modi similique nostrum odit placeat ipsa molestias iure possimus architecto, voluptates corporis recusandae. Ipsum.</p>
+        <div class="skill-wrapper bg-purple">
+          <div class="skill">
+            <div class="skill-icon">
+              <img src="img/skills/HTML5.png" alt="">
+            </div>
+            <div class="skill-titles">
+              <span>HTML</span>
+              <span>CSS / SCSS</span>
+            </div>
+            <div class="skill-experience">
+              <span>5 years experience</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="content" id="contact-page" style="display: none">
-      <div class="page">
-        <div class="page-title text-orange">Contact</div>
-        <div class="page-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam cum quas voluptas magnam, dolor. Odio illo, reiciendis deleniti? Impedit quisquam quibusdam, numquam praesentium harum, sunt qui accusantium possimus blanditiis quia, facere minima officia ipsa explicabo deleniti expedita dolore rem ipsam iste tenetur! Vitae illum, fuga praesentium repudiandae error sit! Soluta nam nemo ad mollitia temporibus deserunt minima labore perspiciatis et dolor a cumque laboriosam expedita doloribus nesciunt tempore, aliquid! Nesciunt eligendi asperiores temporibus, cumque non nisi laborum possimus repellat. Doloremque, qui, explicabo. Nesciunt ducimus dicta mollitia, itaque, obcaecati exercitationem rerum molestias recusandae eius natus provident. Cumque aut voluptate nemo recusandae ipsum placeat, assumenda laborum quae quisquam quo dicta at atque consectetur quaerat, doloribus error repudiandae. Placeat adipisci officiis esse officia nemo totam neque vero voluptas, numquam, debitis incidunt! Delectus voluptatibus consequuntur quae quis deleniti, ducimus quasi, unde vero quisquam molestiae quidem ratione officia, tempore ullam. Asperiores obcaecati amet consequatur quod dicta quasi illo debitis, odit quo doloremque repellendus animi vel ducimus aperiam culpa enim, distinctio omnis nihil perferendis fuga id non similique adipisci aliquid! Nisi esse, deleniti aliquid provident eum commodi recusandae, sunt laborum fugiat quis totam explicabo dolorem nesciunt rem. Facilis minus odit rem velit ipsum, at similique placeat.</p>
+        <div class="skill-wrapper bg-pink">
+          <div class="skill">
+            <div class="skill-icon">
+              <img src="img/skills/C++.png" alt="">
+            </div>
+            <div class="skill-titles">
+              <span>C++</span>
+              <span>C</span>
+            </div>
+            <div class="skill-experience">
+              <span>3 years experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-wrapper">
+          <div class="skill">
+            <div class="skill-icon">
+              <img src="img/skills/PHP.png" alt="">
+            </div>
+            <div class="skill-titles">
+              <span>PHP</span>
+            </div>
+            <div class="skill-experience">
+              <span>2 years experience</span>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+
+
+      <div class="portfolio-heading" id="portfolio">
+        <h1 class="title">Portfolio</h1>
+      </div>
+      <div class="portfolio">
+        <div class="project-wrapper bg-cyan">
+          <div class="project">
+            <div class="media">
+              <img src="img/portfolio/madisite.png" alt="">
+            </div>
+            <div class="details">
+              <div class="project-title">
+                <span>madisonfielder.rocks</span>
+              </div>
+              <div class="project-description">
+                <span>Simple portfolio / resume website I created from scratch to display a friend's 3D animation work.</span>
+              </div>
+            </div>
+            <div class="actions">
+              <a href="http://madisonfielder.rocks" class="action" title="Preview" target="_blank">
+                <div class="icon">
+                  <img src="img/action-icons/External.png" alt="">
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-wrapper bg-pink">
+          <div class="project">
+            <div class="media">
+              <img src="img/portfolio/cantstop.png" alt="">
+            </div>
+            <div class="details">
+              <div class="project-title">
+                <span>Can't Stop</span>
+              </div>
+              <div class="project-description">
+                <span>An AI player for the board game Can’t Stop. The AI is capable of winning approximately 50% of time vs human players in our limited testing.</span>
+              </div>
+            </div>
+            <div class="actions">
+              <a href="https://github.com/khaptonstall/cant-stop" class="action" title="View on GitHub" target="_blank">
+                <div class="icon">
+                  <img src="img/action-icons/GitHub.png" alt="">
+                </div>
+                <div class="message">
+                  <span>View on GitHub</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-wrapper bg-purple">
+          <div class="project">
+            <div class="media">
+              <img src="img/portfolio/ledstrip.png" alt="">
+            </div>
+            <div class="details">
+              <div class="project-title">
+                <span>LED Strip Config</span>
+              </div>
+              <div class="project-description">
+                <span>Code generator for Adafruit Neopixel LED strips using JCanvas.</span>
+              </div>
+            </div>
+            <div class="actions">
+              <a href="https://github.com/ahuerta0686/LED-Strip-Pattern-Designer" class="action" title="View on GitHub" target="_blank">
+                <div class="icon">
+                  <img src="img/action-icons/GitHub.png" alt="">
+                </div>
+                <div class="message">
+                  <span>View on GitHub</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <span></span>
+    </div>
 
     <script src="scripts/main.js"></script>
   </body>
